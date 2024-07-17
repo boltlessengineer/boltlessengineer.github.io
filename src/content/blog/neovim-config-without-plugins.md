@@ -2,6 +2,8 @@
 pubDatetime: 2024-07-17
 draft: false
 title: How to get human rights in Neovim without plugins
+tags:
+  - neovim
 description:
   You can get basic features like LSP, TreeSitter, completion and snippets in neovim
   without any plugins
@@ -332,3 +334,4 @@ You can still have basic functionalities needed for code editing only with nativ
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [rocks.nvim]: https://github.com/nvim-neorocks/rocks.nvim
+[lazy.nvim]: https://github.com/folke/lazy.nvim
