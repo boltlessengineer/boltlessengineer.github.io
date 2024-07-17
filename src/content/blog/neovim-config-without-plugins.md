@@ -16,11 +16,11 @@ Plugins have become a natural part of the Neovim community, which has grown expl
 - [lazy.nvim] (or [packer.nvim] or [rocks.nvim])
 - [nvim-lspconfig]
 - [nvim-treesitter]
-- [nvim-cmp] (and dozens of cmp related plugins)
-- [Luasnip] (and dozens of snippet related plugins)
+- [nvim-cmp] (including several cmp related plugins)
+- [Luasnip] (or [nvim-snippets])
 - [mason.nvim]
 - [Comment.nvim]
-- [telescope.nvim] (or dozens of fuzzy finder plugins)
+- [telescope.nvim] (or [fzf-lua])
 
 etc
 
@@ -354,3 +354,4 @@ I won't recommend you using Neovim without plugins, but now you know that it is 
 [rocks.nvim]: https://github.com/nvim-neorocks/rocks.nvim
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 [NativeVim]: https://github.com/boltlessengineer/NativeVim
+[fzf-lua]: https://github.com/ibhagwan/fzf-lua
