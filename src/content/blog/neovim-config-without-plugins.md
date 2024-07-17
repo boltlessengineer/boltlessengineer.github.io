@@ -34,6 +34,8 @@ If you have one of these questions, you've come to the right place.
 
 In this article, we will look at how to achieve the same functionality in native neovim without famous plugins, and find out what exactly each plugin does and why it is needed.
 
+> This article is based on my PoC config project: [NativeVim]
+
 ## Replacing plugins
 
 ### LSP stuffs
@@ -319,9 +321,25 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 Neovim has default comment support since v0.10. (`:h commenting`)
 
+## Then why should I need those plugins?
+
+Most of them provide better performance or more various features than Neovim's native solutions.
+Some plugins are valuable just for their abstraction.
+
+- You won't want to write all those configs to setup new Language Server or TreeSitter parser in your config.
+- You might want more complex features than Neovim's built-in functionalities provide.
+- You might even want features that doesn't exist in Neovim from core.
+- Some Neovim's built-in features can be slow.
+
+These are all situations where plugins take place.
+
+If you find better way of doing some abstractions or you made some cool new features,
+you can make that config as a standalone plugin. That's how Neovim's plugin community has grown.
+
 ## Conclusion
 
 You can still have basic functionalities needed for code editing only with native Neovim APIs.
+I won't recommend you using Neovim without plugins, but now you know that it is kinda possible.
 
 [nvim-snippets]: https://github.com/garymjr/nvim-snippets
 [Luasnip]: https://github.com/L3MON4D3/LuaSnip
@@ -335,3 +353,4 @@ You can still have basic functionalities needed for code editing only with nativ
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [rocks.nvim]: https://github.com/nvim-neorocks/rocks.nvim
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+[NativeVim]: https://github.com/boltlessengineer/NativeVim
