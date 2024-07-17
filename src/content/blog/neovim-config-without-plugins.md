@@ -1,6 +1,6 @@
 ---
 pubDatetime: 2024-07-17
-draft: true
+draft: false
 title: How to get human rights in Neovim without plugins
 description:
   You can get basic features like LSP, TreeSitter, completion and snippets in neovim
