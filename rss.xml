@@ -432,26 +432,6 @@ Plugins can make it better, but that doesn&#x27;t mean barebone Neovim is nothin
 </description>
       </item>
       <item>
-          <title>BlueSky powered comments using web components</title>
-          <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
-          <author>boltless</author>
-          <link>https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/</link>
-          <guid>https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/</guid>
-          <description xml:base="https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/">&lt;h2 id=&quot;tldr&quot;&gt;tldr;&lt;&#x2F;h2&gt;
-&lt;p&gt;You can put bluesky powered blog comments by simply adding these lines in your webpage templates.&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;lt;!-- put this in html header of your blog --&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;script &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;src&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&amp;quot;&amp;gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;script&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;lt;!-- put this at bottom of blog post --&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bsky-comments &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{{ page.extra.comment }}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;style&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;bsky&amp;quot;&#x2F;&amp;gt;
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h2&gt;
-&lt;ul&gt;
-&lt;li&gt;asdf&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-</description>
-      </item>
-      <item>
           <title>How to get human rights in Neovim without plugins</title>
           <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
           <author>boltless</author>
