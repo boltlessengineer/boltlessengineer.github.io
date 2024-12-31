@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://boltlessengiener.github.io/</loc>
+        <loc>https://boltlessengineer.github.io/</loc>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/ko/</loc>
+        <loc>https://boltlessengineer.github.io/ko/</loc>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/ko/posts/2024-wrapped/</loc>
+        <loc>https://boltlessengineer.github.io/ko/posts/2024-wrapped/</loc>
         <lastmod>2024-12-31</lastmod>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/posts/</loc>
+        <loc>https://boltlessengineer.github.io/posts/</loc>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/posts/2024-wrapped/</loc>
+        <loc>https://boltlessengineer.github.io/posts/2024-wrapped/</loc>
         <lastmod>2024-12-31</lastmod>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/posts/bluesky-comments-with-web-components/</loc>
+        <loc>https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/</loc>
         <lastmod>2024-11-28</lastmod>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/posts/neovim-config-without-plugins-2025/</loc>
+        <loc>https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/</loc>
         <lastmod>2024-12-31</lastmod>
     </url>
     <url>
-        <loc>https://boltlessengiener.github.io/posts/neovim-config-without-plugins/</loc>
+        <loc>https://boltlessengineer.github.io/posts/neovim-config-without-plugins/</loc>
         <lastmod>2024-12-30</lastmod>
     </url>
 </urlset>

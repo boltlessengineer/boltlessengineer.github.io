@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title>boltlessengineer</title>
-    <link rel="self" type="application/atom+xml" href="https://boltlessengiener.github.io/atom.xml"/>
-    <link rel="alternate" type="text/html" href="https://boltlessengiener.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://boltlessengineer.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://boltlessengineer.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2024-12-31T00:00:00+00:00</updated>
-    <id>https://boltlessengiener.github.io/atom.xml</id>
+    <id>https://boltlessengineer.github.io/atom.xml</id>
     <entry xml:lang="en">
         <title>2024 Wrapped</title>
         <published>2024-12-31T00:00:00+00:00</published>
@@ -19,10 +19,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://boltlessengiener.github.io/posts/2024-wrapped/"/>
-        <id>https://boltlessengiener.github.io/posts/2024-wrapped/</id>
+        <link rel="alternate" type="text/html" href="https://boltlessengineer.github.io/posts/2024-wrapped/"/>
+        <id>https://boltlessengineer.github.io/posts/2024-wrapped/</id>
         
-        <content type="html" xml:base="https://boltlessengiener.github.io/posts/2024-wrapped/">&lt;h2 id=&quot;january&quot;&gt;January&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://boltlessengineer.github.io/posts/2024-wrapped/">&lt;h2 id=&quot;january&quot;&gt;January&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;jeonsan-hanmadang-24-02&quot;&gt;Jeonsan-hanmadang (24.02)&lt;&#x2F;h3&gt;
 &lt;p&gt;I had a 30min talk about Neovim in Air Force Intelligence Information Systems Management Group&#x27;s Lunar New Year event.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;february-june&quot;&gt;February ~ June&lt;&#x2F;h2&gt;
@@ -110,10 +110,10 @@ I will refactor my blog when it is ready, but the blog design will remain.&lt;&#
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://boltlessengiener.github.io/posts/neovim-config-without-plugins-2025/"/>
-        <id>https://boltlessengiener.github.io/posts/neovim-config-without-plugins-2025/</id>
+        <link rel="alternate" type="text/html" href="https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/"/>
+        <id>https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/</id>
         
-        <content type="html" xml:base="https://boltlessengiener.github.io/posts/neovim-config-without-plugins-2025/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This is a rewrite of &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins&#x2F;&quot;&gt;an article I wrote last year&lt;&#x2F;a&gt; based on my PoC Neovim config project: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
@@ -312,7 +312,7 @@ Fortunately, starting from v0.11, Neovim added this feature as a built-in API.&l
 External completion plugins not depending on builtin completions usually have better performance and provide way more customizability of how it looks and behaves.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;builtin-snippet-api&quot;&gt;Builtin snippet API&lt;&#x2F;h2&gt;
 &lt;p&gt;Lets have the snippet feature without plugins like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;L3MON4D3&#x2F;LuaSnip&quot;&gt;Luasnip&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;garymjr&#x2F;nvim-snippets&quot;&gt;nvim-snippets&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;Neovim has built-in snippet API in &lt;code&gt;vim.snippet&lt;&#x2F;code&gt; since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengiener.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#enabling-lsp-completion&quot;&gt;LSP completion&lt;&#x2F;a&gt;.) But it still don&#x27;t provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.&lt;&#x2F;p&gt;
+&lt;p&gt;Neovim has built-in snippet API in &lt;code&gt;vim.snippet&lt;&#x2F;code&gt; since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengineer.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#enabling-lsp-completion&quot;&gt;LSP completion&lt;&#x2F;a&gt;.) But it still don&#x27;t provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.&lt;&#x2F;p&gt;
 &lt;p&gt;Instead, there is a similar feature called abbreviation (&lt;code&gt;:h Abbreviations&lt;&#x2F;code&gt;.) To briefly explain, if you register abbreviation in insert mode with &lt;code&gt;:iab ms Microsoft&lt;&#x2F;code&gt;, &lt;code&gt;ms&amp;lt;space&amp;gt;&lt;&#x2F;code&gt; or &lt;code&gt;ms&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt; will be replaced with &lt;code&gt;Microsoft&amp;lt;space&amp;gt;&lt;&#x2F;code&gt; and &lt;code&gt;Microsoft&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt;, respectively. This abbreviation can be triggered with the keymap &lt;code&gt;&amp;lt;c-]&amp;gt;&lt;&#x2F;code&gt; in addition to special characters such as &lt;code&gt;&amp;lt;space&amp;gt;&lt;&#x2F;code&gt;, &lt;code&gt;&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt; or &lt;code&gt;()[]{}&amp;lt;&amp;gt;&#x27;&quot;,.&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;By using abbreviation and &lt;code&gt;vim.snippet&lt;&#x2F;code&gt;, we can implement the following snippet API.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;lua&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-lua &quot;&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;---@param trigger string trigger string for snippet
@@ -434,7 +434,7 @@ You can read plugin readme &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ju
 &lt;&#x2F;details&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
 &lt;p&gt;So far, we’ve explored how to set up Neovim in its purest form, without relying on external plugins.&lt;&#x2F;p&gt;
-&lt;p&gt;As I mentioned in the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengiener.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#introduction&quot;&gt;Introduction&lt;&#x2F;a&gt;, this is not to suggest that plugins are bad or unnecessary.
+&lt;p&gt;As I mentioned in the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengineer.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#introduction&quot;&gt;Introduction&lt;&#x2F;a&gt;, this is not to suggest that plugins are bad or unnecessary.
 Plugins serve specific purposes, and one of Neovim’s greatest strengths is its vast and diverse plugin ecosystem.
 Many plugins offer improved performance, extended functionality, or valuable abstractions that simplify configuration.&lt;&#x2F;p&gt;
 &lt;p&gt;If you find better way of doing some abstractions or you made some cool new features,
@@ -464,10 +464,10 @@ Plugins can make it better, but that doesn&#x27;t mean barebone Neovim is nothin
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://boltlessengiener.github.io/posts/bluesky-comments-with-web-components/"/>
-        <id>https://boltlessengiener.github.io/posts/bluesky-comments-with-web-components/</id>
+        <link rel="alternate" type="text/html" href="https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/"/>
+        <id>https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/</id>
         
-        <content type="html" xml:base="https://boltlessengiener.github.io/posts/bluesky-comments-with-web-components/">&lt;h2 id=&quot;tldr&quot;&gt;tldr;&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://boltlessengineer.github.io/posts/bluesky-comments-with-web-components/">&lt;h2 id=&quot;tldr&quot;&gt;tldr;&lt;&#x2F;h2&gt;
 &lt;p&gt;You can put bluesky powered blog comments by simply adding these lines in your webpage templates.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;lt;!-- put this in html header of your blog --&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;script &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;src&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&amp;quot;&amp;gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;script&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
@@ -495,10 +495,10 @@ Plugins can make it better, but that doesn&#x27;t mean barebone Neovim is nothin
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://boltlessengiener.github.io/posts/neovim-config-without-plugins/"/>
-        <id>https://boltlessengiener.github.io/posts/neovim-config-without-plugins/</id>
+        <link rel="alternate" type="text/html" href="https://boltlessengineer.github.io/posts/neovim-config-without-plugins/"/>
+        <id>https://boltlessengineer.github.io/posts/neovim-config-without-plugins/</id>
         
-        <content type="html" xml:base="https://boltlessengiener.github.io/posts/neovim-config-without-plugins/">&lt;blockquote&gt;
+        <content type="html" xml:base="https://boltlessengineer.github.io/posts/neovim-config-without-plugins/">&lt;blockquote&gt;
 &lt;p&gt;This article is outdated.
 I wrote new updated article &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
