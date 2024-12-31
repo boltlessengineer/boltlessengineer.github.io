@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="You can get basic features like LSP, TreeSitter, completion and snippets in neovim without any plugins">
+    <title>boltlessengineer | How to get human rights in Neovim without plugins</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+    <link rel="stylesheet" href="https://boltlessengiener.github.io/style.css?h=3ea6bc291774d89a5ef9">
+    <script src="https://boltlessengiener.github.io/bsky-comments.js?h=eca10a44a7b85a513335"></script>
+    
+    
+    
+        
+            <link rel="alternate" type="application/atom+xml" title="boltlessengineer - Atom Feed" href="https://boltlessengiener.github.io/atom.xml">
+        
+    
+        
+            <link rel="alternate" type="application/rss+xml" title="boltlessengineer - RSS Feed" href="https://boltlessengiener.github.io/rss.xml">
+        
+    
+    
+</head>
+<body>
+    
+<header class="space">
+    <a href="https:&#x2F;&#x2F;boltlessengiener.github.io">&LeftArrow; Home</a>
+</header>
+
+    
+<main>
+    <h1>How to get human rights in Neovim without plugins</h1>
+    
+    <p class="secondary small">
+        17 July, 2024
+
+        
+        
+        
+
+        
+    </p>
+    
+    <div class="space"></div>
+    <blockquote>
+<p>This article is outdated.
+I wrote new updated article <a href="/posts/neovim-config-without-plugins-2025/">here</a>.</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Plugins have become a natural part of the Neovim community, which has grown explosively starting with v0.5.0 released in 2021.</p>
+<ul>
+<li><a href="https://github.com/folke/lazy.nvim">lazy.nvim</a> (or <a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a> or <a href="https://github.com/nvim-neorocks/rocks.nvim">rocks.nvim</a>)</li>
+<li><a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a></li>
+<li><a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a></li>
+<li><a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a> (including several cmp related plugins)</li>
+<li><a href="https://github.com/L3MON4D3/LuaSnip">Luasnip</a> (or <a href="https://github.com/garymjr/nvim-snippets">nvim-snippets</a>)</li>
+<li><a href="https://github.com/williamboman/mason.nvim">mason.nvim</a></li>
+<li><a href="https://github.com/numToStr/Comment.nvim">Comment.nvim</a></li>
+<li><a href="https://github.com/nvim-telescope/telescope.nvim">telescope.nvim</a> (or <a href="https://github.com/ibhagwan/fzf-lua">fzf-lua</a>)</li>
+</ul>
+<p>etc</p>
+<p>It is pretty common to find more than 10 plugins installed in <em>most minimalistic neovim config</em>.</p>
+<ul>
+<li>Why do I need <a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a> or <a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a> if Neovim officially supports LSP and TreeSitter?</li>
+<li>Why there are so many plugins needed to just get autocompletion?</li>
+<li>Why should I install weird third-party plugins? I just want to use NEOVIM!</li>
+</ul>
+<p>If you have one of these questions, you've come to the right place.</p>
+<p>In this article, we will look at how to achieve the same functionality in native neovim without famous plugins, and find out what exactly each plugin does and why it is needed.</p>
+<blockquote>
+<p>This article is based on my PoC config project: <a href="https://github.com/boltlessengineer/NativeVim">NativeVim</a></p>
+</blockquote>
+<h2 id="replacing-plugins">Replacing plugins</h2>
+<h3 id="lsp-stuffs">LSP stuffs</h3>
+<h4 id="nvim-lspconfig">nvim-lspconfig</h4>
+<p>Let's start with the most famous one.</p>
+<blockquote>
+<p>The Nvim LSP client does not live here. This is only a collection of LSP configures.
+-- <a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a> README</p>
+</blockquote>
+<p>As indicated in the README, nvim-lspconfig, as its name suggests, is a plugin that provides default config values for Language Server.</p>
+<p>Even without nvim-lspconfig, you can initiate connect Language Server to Neovim using the <code>vim.lsp.start()</code> API.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#65737e;">-- start the LSP and get the client id
+</span><span style="color:#65737e;">-- it will re-use the running client if one is found matching name and root_dir
+</span><span style="color:#65737e;">-- see `:h vim.lsp.start()` for more info
+</span><span style="color:#bf616a;">vim</span><span>.lsp.</span><span style="color:#bf616a;">start</span><span>({
+</span><span>    </span><span style="color:#a3be8c;">name </span><span>= &quot;</span><span style="color:#a3be8c;">lua-language-server</span><span>&quot;,
+</span><span>    </span><span style="color:#a3be8c;">cmd </span><span>= { &quot;</span><span style="color:#a3be8c;">lua-language-server</span><span>&quot; },
+</span><span>    </span><span style="color:#a3be8c;">root_dir </span><span>= </span><span style="color:#bf616a;">vim</span><span>.fs.</span><span style="color:#bf616a;">root</span><span>(</span><span style="color:#d08770;">0</span><span>, { &quot;</span><span style="color:#a3be8c;">.luarc.json</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.luarc.jsonc</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.luacheckrc</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.stylua.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">stylua.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">selene.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">selene.yml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.git</span><span>&quot; }),
+</span><span>})
+</span></code></pre>
+<p>And you can make an AutoCommand to run each Language Servers in specific filetypes.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#65737e;">---@type table&lt;string, vim.lsp.ClientConfig&gt;
+</span><span style="color:#b48ead;">local </span><span style="color:#bf616a;">servers </span><span>= {
+</span><span>    </span><span style="color:#a3be8c;">lua_ls </span><span>= {
+</span><span>        </span><span style="color:#a3be8c;">name </span><span>= &quot;</span><span style="color:#a3be8c;">lua-language-server</span><span>&quot;,
+</span><span>        </span><span style="color:#a3be8c;">cmd </span><span>= { &quot;</span><span style="color:#a3be8c;">lua-language-server</span><span>&quot; },
+</span><span>        </span><span style="color:#a3be8c;">root_dir </span><span>= </span><span style="color:#bf616a;">vim</span><span>.fs.</span><span style="color:#bf616a;">root</span><span>(</span><span style="color:#d08770;">0</span><span>, { &quot;</span><span style="color:#a3be8c;">.luarc.json</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.luarc.jsonc</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.luacheckrc</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.stylua.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">stylua.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">selene.toml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">selene.yml</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">.git</span><span>&quot; }),
+</span><span>        </span><span style="color:#a3be8c;">filetypes </span><span>= { &quot;</span><span style="color:#a3be8c;">lua</span><span>&quot; },
+</span><span>    },
+</span><span>    </span><span style="color:#65737e;">-- add more servers here
+</span><span>}
+</span><span style="color:#b48ead;">local </span><span style="color:#bf616a;">group </span><span>= </span><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_create_augroup</span><span>(&quot;</span><span style="color:#a3be8c;">UserLspStart</span><span>&quot;, { </span><span style="color:#a3be8c;">clear </span><span>= </span><span style="color:#d08770;">true </span><span>})
+</span><span style="color:#b48ead;">for </span><span style="color:#bf616a;">name</span><span>, </span><span style="color:#bf616a;">config </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">pairs</span><span>(</span><span style="color:#bf616a;">servers</span><span>) </span><span style="color:#b48ead;">do
+</span><span>    </span><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_create_autocmd</span><span>(&quot;</span><span style="color:#a3be8c;">FileType</span><span>&quot;, {
+</span><span>        </span><span style="color:#a3be8c;">group </span><span>= </span><span style="color:#bf616a;">group</span><span>,
+</span><span>        </span><span style="color:#a3be8c;">pattern </span><span>= </span><span style="color:#bf616a;">config</span><span>.filetypes,
+</span><span>        </span><span style="color:#8fa1b3;">callback </span><span>= </span><span style="color:#b48ead;">function </span><span>(ev)
+</span><span>            </span><span style="color:#bf616a;">vim</span><span>.lsp.</span><span style="color:#bf616a;">start</span><span>(</span><span style="color:#bf616a;">servers</span><span>[</span><span style="color:#bf616a;">name</span><span>], { </span><span style="color:#a3be8c;">bufnr </span><span>= </span><span style="color:#bf616a;">ev</span><span>.buf })
+</span><span>        </span><span style="color:#b48ead;">end</span><span>,
+</span><span>    })
+</span><span style="color:#b48ead;">end
+</span></code></pre>
+<p>With nvim-lspconfig, you only need to write this line and nvim-lspconfig will set all default configs for you.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#96b5b4;">require</span><span>(&quot;</span><span style="color:#a3be8c;">lspconfig</span><span>&quot;).lua_ls.</span><span style="color:#bf616a;">setup</span><span>()
+</span></code></pre>
+<h4 id="mason-nvim">mason.nvim</h4>
+<p><a href="https://github.com/williamboman/mason.nvim">mason.nvim</a> is a package manager inside Neovim which can install tools like Language Servers, Debug Servers, Formatters and Linters.</p>
+<p>In other words, if you install the tool manually, mason.nvim is not necessary. For example, typescript-language-server can be installed as follows.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># npm
+</span><span style="color:#bf616a;">npm</span><span> install</span><span style="color:#bf616a;"> -g</span><span> typescript-language-server
+</span></code></pre>
+<p>(you can use whatever package manager you want instead of <code>npm</code> of course)</p>
+<h4 id="default-lsp-keymaps-options">default LSP keymaps/options</h4>
+<p>Neovim sets various LSP related keymaps and options on <code>LspAttach</code> event by default. You can see full list with <code>:h lsp-defaults</code>.</p>
+<p>Here is quick overview of default keymaps:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>NORMAL MODE
+</span><span>K        : hover
+</span><span>grn      : rename
+</span><span>gra      : code action
+</span><span>grr      : references
+</span><span>CTRL-]   : definition
+</span><span>CTRL-W_] : definition in new window
+</span><span>CTRL-W_} : definition in preview window
+</span><span>
+</span><span>VISUAL MODE
+</span><span>gq : format
+</span><span>
+</span><span>INSERT MODE
+</span><span>CTRL-S        : signature help
+</span><span>CTRL-X_CTRL-O : completion
+</span></code></pre>
+<h3 id="completion">Completion</h3>
+<h4 id="nvim-cmp">nvim-cmp</h4>
+<p>Some surprising facts:</p>
+<ul>
+<li>Vim natively supports completion and completion UI. (<code>:h ins-completion</code>)</li>
+<li>There is user-configurable completion source for Vim. (<code>:h 'omnifunc'</code>)</li>
+<li>Neovim provides completion source from LSP. (<code>:h vim.lsp.omnifunc()</code>)</li>
+<li>Neovim provides completion source for TreeSitter Nodes or Queries. (<code>:h vim.treesitter.query.omnifunc()</code>)</li>
+<li>Neovim has <code>fuzzy</code> field in <code>'completeopt'</code> option since v0.11. (<code>:h 'completeopt'</code>)</li>
+</ul>
+<h5 id="cmp-nvim-lsp">cmp-nvim-lsp</h5>
+<p>So if you make <code>LspAttach</code> AutoCommand like below, you can use LSP-provided completion source with <code>i_CTRL-X_CTRL-O</code> keymap (press <code>&lt;c-x&gt;&lt;c-o&gt;</code> in Insert Mode.)</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_create_autocmd</span><span>(&quot;</span><span style="color:#a3be8c;">LspAttach</span><span>&quot; {
+</span><span>    </span><span style="color:#8fa1b3;">callback </span><span>= </span><span style="color:#b48ead;">function </span><span>(ev)
+</span><span>        </span><span style="color:#bf616a;">vim</span><span>.bo[</span><span style="color:#bf616a;">ev</span><span>.buf].omnifunc = &quot;</span><span style="color:#a3be8c;">v:lua.vim.lsp.omnifunc</span><span>&quot;
+</span><span>        </span><span style="color:#65737e;">-- ...
+</span><span>    </span><span style="color:#b48ead;">end</span><span>,
+</span><span>})
+</span></code></pre>
+<p>This AutoCommand is one of defaults in Neovim since v0.10.</p>
+<p>However, we can't say that this alone properly utilizes the autocompletion provided by LSP. Since omnifunc does not provide functions such as snippet or auto-import, support for these must be set separately.
+Fortunately, starting from v0.11, Neovim added this feature as a built-in API.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_create_autocmd</span><span>(&quot;</span><span style="color:#a3be8c;">LspAttach</span><span>&quot; {
+</span><span>    </span><span style="color:#8fa1b3;">callback </span><span>= </span><span style="color:#b48ead;">function </span><span>(ev)
+</span><span>        </span><span style="color:#bf616a;">vim</span><span>.bo[</span><span style="color:#bf616a;">ev</span><span>.buf].omnifunc = &quot;</span><span style="color:#a3be8c;">v:lua.vim.lsp.omnifunc</span><span>&quot;
+</span><span>        </span><span style="color:#65737e;">-- ...
+</span><span>    </span><span style="color:#b48ead;">end</span><span>,
+</span><span>})
+</span></code></pre>
+<p>When <code>vim.lsp.completion.enable()</code> is executed, Neovim performs the additional operations provided by the LSP in buffer where user auto-completes with LSP. (e.g. modifying part of the code like auto-import, or expanding a snippet)</p>
+<h5 id="cmp-path">cmp-path</h5>
+<p>Vim has a built-in filename completion. (<code>:h i_CTRL-X_CTRL-F</code>)</p>
+<blockquote>
+<p>[!NOTE]
+This is based on where <code>nvim</code> is executed, not current filepath.</p>
+</blockquote>
+<h5 id="cmp-buffer">cmp-buffer</h5>
+<p>Vim has a built-in buffer word completion.</p>
+<ul>
+<li><code>:h i_CTRL-X_CTRL-P</code></li>
+<li><code>:h i_CTRL-X_CTRL-N</code></li>
+<li><code>:h i_CTRL-P</code></li>
+<li><code>:h i_CTRL-N</code></li>
+</ul>
+<h5 id="why-use-nvim-cmp-then">Why use nvim-cmp then?</h5>
+<ul>
+<li>Can gather multiple sources and display them at once</li>
+<li>Supports more diverse autocomplete sources</li>
+<li>Provides more diverse UI customization options</li>
+<li>Provides more sorting options</li>
+</ul>
+<h3 id="snippet">Snippet</h3>
+<p>Lets have the snippet feature without plugins like <a href="https://github.com/L3MON4D3/LuaSnip">Luasnip</a> or [nvim-snippet].</p>
+<p>Neovim has built-in snippet API in <code>vim.snippet</code> since v0.10, so most LSP-provided snippets work (since v0.11, if you enable the LSP completion.) But it still don't provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.</p>
+<p>Instead, there is a similar function called <code>Abbreviation</code> (<code>:h Abbreviations</code>.) To briefly explain, if you register abbreviation in insert mode with <code>:iab ms Microsoft</code>, <code>ms&lt;space&gt;</code> or <code>ms&lt;cr&gt;</code> will be replaced with <code>Microsoft&lt;space&gt;</code> and <code>Microsoft&lt;cr&gt;</code>, respectively. This abbreviation can be triggered with the keymap <code>&lt;c-]&gt;</code> in addition to special characters such as <code>&lt;space&gt;</code>, <code>&lt;cr&gt;</code> or <code>()[]{}&lt;&gt;'",.</code>.</p>
+<p>By using abbreviation and <code>vim.snippet</code>, we can implement the following snippet API.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#65737e;">---@param trigger string trigger string for snippet
+</span><span style="color:#65737e;">---@param body string snippet text that will be expanded
+</span><span style="color:#65737e;">---@param opts? vim.keymap.set.Opts
+</span><span style="color:#65737e;">---
+</span><span style="color:#65737e;">---Refer to &lt;https://microsoft.github.io/language-server-protocol/specification/#snippet_syntax&gt;
+</span><span style="color:#65737e;">---for the specification of valid body.
+</span><span style="color:#b48ead;">function </span><span style="color:#bf616a;">vim</span><span>.snippet.</span><span style="color:#8fa1b3;">add</span><span>(trigger, body, opts)
+</span><span>    </span><span style="color:#bf616a;">vim</span><span>.keymap.</span><span style="color:#bf616a;">set</span><span>(&quot;</span><span style="color:#a3be8c;">ia</span><span>&quot;, </span><span style="color:#bf616a;">trigger</span><span>, </span><span style="color:#b48ead;">function</span><span>()
+</span><span>        </span><span style="color:#65737e;">-- If abbrev is expanded with keys like &quot;(&quot;, &quot;)&quot;, &quot;&lt;cr&gt;&quot;, &quot;&lt;space&gt;&quot;,
+</span><span>        </span><span style="color:#65737e;">-- don&#39;t expand the snippet. Only accept &quot;&lt;c-]&gt;&quot; as trigger key.
+</span><span>        </span><span style="color:#b48ead;">local </span><span style="color:#bf616a;">c </span><span>= </span><span style="color:#bf616a;">vim</span><span>.fn.</span><span style="color:#bf616a;">nr2char</span><span>(</span><span style="color:#bf616a;">vim</span><span>.fn.</span><span style="color:#bf616a;">getchar</span><span>(</span><span style="color:#d08770;">0</span><span>))
+</span><span>        </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">c </span><span>~= &quot;&quot; </span><span style="color:#b48ead;">then
+</span><span>            </span><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_feedkeys</span><span>(</span><span style="color:#bf616a;">trigger </span><span>.. </span><span style="color:#bf616a;">c</span><span>, &quot;</span><span style="color:#a3be8c;">i</span><span>&quot;, </span><span style="color:#d08770;">true</span><span>)
+</span><span>            </span><span style="color:#b48ead;">return
+</span><span>        </span><span style="color:#b48ead;">end
+</span><span>        </span><span style="color:#bf616a;">vim</span><span>.snippet.</span><span style="color:#bf616a;">expand</span><span>(</span><span style="color:#bf616a;">body</span><span>)
+</span><span>    </span><span style="color:#b48ead;">end</span><span>, </span><span style="color:#bf616a;">opts</span><span>)
+</span><span style="color:#b48ead;">end
+</span></code></pre>
+<p>With this, you can add custom snippets with <code>vim.snippet.add()</code> and use <code>&lt;c-]&gt;</code> keymap to expand the snippets.</p>
+<p>Example of some lua function definition snippets:</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.snippet.</span><span style="color:#bf616a;">add</span><span>(
+</span><span>    &quot;</span><span style="color:#a3be8c;">fn</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">function ${1:name}($2)</span><span style="color:#96b5b4;">\n\t</span><span style="color:#a3be8c;">${3:-- content}</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">end</span><span>&quot;,
+</span><span>    { </span><span style="color:#a3be8c;">buffer </span><span>= </span><span style="color:#d08770;">0 </span><span>}
+</span><span>)
+</span><span style="color:#bf616a;">vim</span><span>.snippet.</span><span style="color:#bf616a;">add</span><span>(
+</span><span>    &quot;</span><span style="color:#a3be8c;">lfn</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">local function ${1:name}($2)</span><span style="color:#96b5b4;">\n\t</span><span style="color:#a3be8c;">${3:-- content}</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">end</span><span>&quot;,
+</span><span>    { </span><span style="color:#a3be8c;">buffer </span><span>= </span><span style="color:#d08770;">0 </span><span>}
+</span><span>)
+</span></code></pre>
+<p>put this in <code>after/ftplugin/lua.lua</code></p>
+<p>So when you type <code>fn&lt;c-]&gt;</code> in lua file, it will be expanded to this:
+(<code>|...|</code> is a cursor)</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>function |name|()
+</span><span>    -- content
+</span><span>end
+</span></code></pre>
+<h4 id="why-use-nvim-snippets-then">Why use nvim-snippets then?</h4>
+<p><a href="https://github.com/garymjr/nvim-snippets">nvim-snippets</a> supports snippets in json format (compatible with VSCode,) and can be registered as an completion source for <a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a>.</p>
+<h4 id="why-use-luasnip-then">Why use Luasnip then?</h4>
+<p><a href="https://github.com/L3MON4D3/LuaSnip">Luasnip</a> supports defining snippets in lua on top of that. So users can make more complex snippets.</p>
+<h3 id="treesitter">TreeSitter</h3>
+<h4 id="nvim-treesitter">nvim-treesitter</h4>
+<p>Long ago, it was near imposible to use TreeSitter parsers in Neovim without <a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a> because most TreeSitter APIs lived in nvim-treesitter. But nowadays, those APIs are included in Neovim core, so you can use TreeSitter parsers without nvim-treesitter.</p>
+<p>You can attach TreeSitter parser to current buffer with <code>vim.treesitter.start()</code>.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.api.</span><span style="color:#bf616a;">nvim_create_autocmd</span><span>(&quot;</span><span style="color:#a3be8c;">FileType</span><span>&quot;, {
+</span><span>    </span><span style="color:#8fa1b3;">callback </span><span>= </span><span style="color:#b48ead;">function</span><span>(ev)
+</span><span>        </span><span style="color:#96b5b4;">pcall</span><span>(</span><span style="color:#bf616a;">vim</span><span>.treesitter.start)
+</span><span>    </span><span style="color:#b48ead;">end
+</span><span>})
+</span></code></pre>
+<p>We use <code>pcall</code> here because <code>vim.treesitter.start</code> may fail if no parser is registered for the filetype of the current buffer.</p>
+<h5 id="install-treesitter-parser-manually">Install TreeSitter parser manually</h5>
+<p><code>:TSInstall</code> command in nvim-treesitter clones Parser's git repository and built the parser from it. Some TreeSitter parsers include query statements (highlight.scm, fold.scm, etc.) related to the parser in the repository, but some parts may not match Neovim's spec, so the nvim-treesitter plugin includes query statements for all parsers.</p>
+<blockquote>
+<p>[!INFO]
+This is based on the <code>master</code> branch of <a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter</a>. New <code>main</code> branch will not include those query files.</p>
+</blockquote>
+<p>Fortunately, as of this writing, most of the TreeSitter parsers are available on <a href="https://luarocks.org">luarocks.org</a>, so you can easily install the TreeSitter parser package for Neovim using [luarocks]. These luarocks packages (aka. rocks) also include various queries (mostly taken from the nvim-treesitter repository) required to use each parser.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">luarocks </span><span>\
+</span><span style="color:#bf616a;">	--lua-version</span><span>=5.1 \
+</span><span style="color:#bf616a;">	--tree</span><span>=$</span><span style="color:#bf616a;">HOME</span><span>/.local/share/nvim/rocks \
+</span><span>	install</span><span style="color:#bf616a;"> --dev </span><span>\
+</span><span>	tree-sitter-rust
+</span></code></pre>
+<blockquote>
+<p>[!NOTE]
+replace <code>--tree</code> option to <code>$HOME/AppData/Local/nvim-data/rocks</code> if you are on Windows</p>
+</blockquote>
+<p>With this script, you can install tree-sitter-rust parser and its query files in <code>$HOME/.local/share/nvim/rocks/lib/luarocks/rock-5.1/tree-sitter-rust/scm-1</code> path. You can add this path to <code>'runtimepath'</code> and Neovim will recognize the rust parser and needed query files.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.opt.runtimepath:</span><span style="color:#bf616a;">append</span><span>(</span><span style="color:#bf616a;">vim</span><span>.fs.</span><span style="color:#bf616a;">joinpath</span><span>(</span><span style="color:#bf616a;">vim</span><span>.fn.</span><span style="color:#bf616a;">stdpath</span><span>(&quot;</span><span style="color:#a3be8c;">data</span><span>&quot;) </span><span style="color:#65737e;">--[[@as string]]</span><span>, &quot;</span><span style="color:#a3be8c;">nvim</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">rocks</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">lib</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">luarocks</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">rocks-5.1</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">tree-sitter-rust</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">scm-1</span><span>&quot;))
+</span></code></pre>
+<p>You can use <code>:checkhealth vim.treesitter</code> to see if installed parser is registered without problem.</p>
+<blockquote>
+<p>[!CAUTION]
+Some TreeSitter parsers requires other packages to work properly.
+For example, <code>tree-sitter-javascript</code> and <code>tree-sitter-typescript</code> depend on <code>tree-sitter-ecma</code>.</p>
+</blockquote>
+<h3 id="fold">Fold</h3>
+<p>Neovim has built-in folding method using TreeSitter.
+You can use TreeSitter provided fold with following options.</p>
+<pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#bf616a;">vim</span><span>.o.foldenable = </span><span style="color:#d08770;">true
+</span><span style="color:#bf616a;">vim</span><span>.o.foldlevel = </span><span style="color:#d08770;">99
+</span><span style="color:#bf616a;">vim</span><span>.o.foldlevelstart = </span><span style="color:#d08770;">99
+</span><span style="color:#bf616a;">vim</span><span>.o.foldmethod = &quot;</span><span style="color:#a3be8c;">expr</span><span>&quot;
+</span><span style="color:#bf616a;">vim</span><span>.o.foldexpr = &quot;</span><span style="color:#a3be8c;">v:lua.vim.treesitter.foldexpr()</span><span>&quot;
+</span></code></pre>
+<h3 id="comment">Comment</h3>
+<p>Neovim has default comment support since v0.10. (<code>:h commenting</code>)</p>
+<h2 id="then-why-should-i-need-those-plugins">Then why should I need those plugins?</h2>
+<p>Most of them provide better performance or more various features than Neovim's native solutions.
+Some plugins are valuable just for their abstraction.</p>
+<ul>
+<li>You won't want to write all those configs to setup new Language Server or TreeSitter parser in your config.</li>
+<li>You might want more complex features than Neovim's built-in functionalities provide.</li>
+<li>You might even want features that doesn't exist in Neovim from core.</li>
+<li>Some Neovim's built-in features can be slow.</li>
+</ul>
+<p>These are all situations where plugins take place.</p>
+<p>If you find better way of doing some abstractions or you made some cool new features,
+you can make that config as a standalone plugin. That's how Neovim's plugin community has grown.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You can still have basic functionalities needed for code editing only with native Neovim APIs.
+I won't recommend you using Neovim without plugins, but now you know that it is kinda possible.</p>
+
+    
+</main>
+
+    <div class="dark-mode-buttons">
+        <button class="dark-mode-button" id="dark-mode-on"><img src="https://boltlessengiener.github.io/dark_mode.svg" width="24" height="24" alt="Dark mode" aria-label="dark mode toggle" title="Dark mode"></button>
+        <button class="dark-mode-button" id="dark-mode-off"><img src="https://boltlessengiener.github.io/light_mode.svg" width="24" height="24" alt="Light mode" aria-label="light mode toggle" title="Light mode"></button>
+    </div>
+    <script>
+        const cls = document.querySelector("html").classList;
+        const sessionTheme = sessionStorage.getItem("theme");
+
+        function setDark() {
+            cls.add("dark-mode");
+            cls.remove("light-mode");
+            sessionStorage.setItem("theme", "dark");
+        }
+        function setLight() {
+            cls.add("light-mode");
+            cls.remove("dark-mode");
+            sessionStorage.setItem("theme", "light");
+        }
+
+        if (sessionTheme === "dark") {
+            setDark();
+        } else if (sessionTheme === "light") {
+            setLight();
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            setDark();
+        }
+
+        document.getElementById("dark-mode-on").addEventListener("click", function(e) {
+            setDark();
+        });
+        document.getElementById("dark-mode-off").addEventListener("click", function(e) {
+            setLight();
+        });
+    </script>
+    <noscript>
+        <style>
+            .dark-mode-buttons {
+                display: none;
+            }
+        </style>
+    </noscript>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/*
+ * credits: https://ishadeed.com/article/comment-component/
+ */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+    position: relative;
+}
+hr {
+    margin: 1.5rem 0;
+}
+button {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    outline: none;
+    appearance: none;
+}
+
+/* styles */
+:host {
+    --comment__size: 2rem;
+    --comment__line-width: var(--line-width, 1px);
+    --comment__line-gap: var(--line-gap, 4px);
+}
+/*@media (prefers-color-scheme: light) {*/
+/*    :host {*/
+/*        --comment__secondary: #777;*/
+/*        --comment__background-color: #ddd;*/
+/*        --comment__line-color: #bbb;*/
+/*        --comment__link-color: #7bd;*/
+/*    }*/
+/*}*/
+/*@media (prefers-color-scheme: dark) {*/
+/*    :host {*/
+/*        --comment__secondary: #999;*/
+/*        --comment__background-color: #222;*/
+/*        --comment__line-color: #444;*/
+/*        --comment__link-color: #7bd;*/
+/*    }*/
+/*}*/
+
+.comment {
+    position: relative;
+    gap: 0.5rem;
+}
+a, a:link, a:visited {
+    color: var(--comment__link-color);
+}
+.avatar {
+    flex: 0 0 var(--comment__size);
+    width: var(--comment__size);
+    height: var(--comment__size);
+    border-radius: 50%;
+    background-color: #d1d5db;
+}
+.comment__profile > span {
+    font-weight: 600;
+}
+.comment__body {
+    background-color: var(--comment__background-color);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
+.comment__meta {
+    padding: 0.25rem 0;
+    /*font-size: 75%;*/
+    color: var(--comment__secondary);
+}
+li {
+    margin-top: var(--comment__line-gap);
+}
+li > ul > li {
+    padding-inline-start: calc(var(--comment__size) + 0.5rem);
+}
+/* merge comment to parent's level */
+:host([merge-op]) li > ul > li.op,
+:host([merge-single-reply]) li > ul > li:first-child:last-child {
+    padding-inline-start: 0;
+}
+:host([merge-op]) li > ul > li.op:before,
+:host([merge-single-reply]) li > ul > li:first-child:last-child:before {
+    display: none;
+}
+/* curved line */
+li > ul > li:before {
+    --width: calc(var(--comment__size) / 2 + 0.5rem - var(--comment__line-gap));
+    --height: calc(var(--comment__size) / 2 + var(--comment__line-gap));
+    content: "";
+    position: absolute;
+    top: calc(0px - var(--comment__line-gap));
+    inset-inline-start: calc(var(--comment__size) / 2);
+    width: var(--width);
+    height: var(--height);
+    border-inline-start: var(--comment__line-width) solid var(--comment__line-color);
+    border-bottom: var(--comment__line-width) solid var(--comment__line-color);
+    border-end-start-radius: 1rem;
+    box-sizing: border-box;
+}
+/* vertical line */
+li:has(ul) > div.comment:after,
+li > ul > li:not(:last-child):after {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(var(--comment__size) / 2);
+    width: var(--comment__line-width);
+    top: 0px;
+    bottom: 0px;
+    background: var(--comment__line-color);
+}
+/* vertical line across avatar */
+li:has(ul) > div.comment:after,
+li > ul > li.op:not(:last-child):after {
+    top: calc(var(--comment__size) + var(--comment__line-gap));
+}
+/* vertical line left to avatar */
+li > ul > li:not(.op):not(:last-child):after {
+}
+
+button.show-more-btn {
+    text-decoration: underline;
+}
