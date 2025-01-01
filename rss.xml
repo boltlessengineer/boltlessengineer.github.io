@@ -2,99 +2,19 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>boltlessengineer</title>
-      <link>https://boltlessengineer.github.io</link>
+      <link>https://boltless.me</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://boltlessengineer.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Tue, 31 Dec 2024 00:00:00 +0000</lastBuildDate>
-      <item>
-          <title>2024 Wrapped</title>
-          <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-          <author>boltless</author>
-          <link>https://boltlessengineer.github.io/posts/2024-wrapped/</link>
-          <guid>https://boltlessengineer.github.io/posts/2024-wrapped/</guid>
-          <description xml:base="https://boltlessengineer.github.io/posts/2024-wrapped/">&lt;h2 id=&quot;january&quot;&gt;January&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;jeonsan-hanmadang-24-02&quot;&gt;Jeonsan-hanmadang (24.02)&lt;&#x2F;h3&gt;
-&lt;p&gt;I had a 30min talk about Neovim in Air Force Intelligence Information Systems Management Group&#x27;s Lunar New Year event.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;february-june&quot;&gt;February ~ June&lt;&#x2F;h2&gt;
-&lt;p&gt;I can&#x27;t remember exactly, but I spent most of my free time working on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; in first half of 2024.
-I now understand clearly why &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt; is so hard to implement and started fixing from &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;. Stable parser is only possible with stable syntax.&lt;&#x2F;p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I did spent quite a time in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;, but I couldn&#x27;t remember what happened in timeline. Seems like I really need some way to log my works like this blog.&lt;&#x2F;p&gt;
-&lt;&#x2F;blockquote&gt;
-&lt;h2 id=&quot;july&quot;&gt;July&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;nativevim&quot;&gt;NativeVim&lt;&#x2F;h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1e5k1fn&#x2F;nativevim_a_neovim_config_without_any_plugins&quot;&gt;reddit post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins&quot;&gt;blog post&lt;&#x2F;a&gt; &lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; is a PoC config project I made to show Neovim&#x27;s builtin features.
-A lot more people showed interest than I expected, and I&#x27;m pretty proud of the results.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;blog-astro&quot;&gt;Blog (Astro)&lt;&#x2F;h3&gt;
-&lt;p&gt;I made a blog with &lt;a href=&quot;https:&#x2F;&#x2F;astro.build&quot;&gt;Astro&lt;&#x2F;a&gt; in a hurry just to share the blog post for &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt;.
-I originally intended to use &lt;a href=&quot;https:&#x2F;&#x2F;gohugo.io&quot;&gt;Hugo&lt;&#x2F;a&gt;, but I end up with Astro because I don&#x27;t have enough time to learn new SSG framework.&lt;&#x2F;p&gt;
-&lt;p&gt;I regret making a blog at that point. Simple gist can fit for my need. I can edit it later mentioning that the post has been moved to new blog.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;rest-nvim-tree-sitter-http&quot;&gt;rest-nvim&#x2F;tree-sitter-http&lt;&#x2F;h3&gt;
-&lt;p&gt;After seeing that &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; was archived, I made plans to resurrect it in my own.
-I started from fixing the core parser; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;tree-sitter-http&quot;&gt;tree-sitter-http&lt;&#x2F;a&gt; which had pretty many issues causing several &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; bugs.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;august&quot;&gt;August&lt;&#x2F;h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1eh0yr6&#x2F;restnvim_is_back&#x2F;&quot;&gt;reddit post - rest.nvim is back (from gorilla-moe)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1eyag2k&#x2F;restnvim_is_back_v30_release&#x2F;&quot;&gt;reddit post - rest.nvim is back!! (v3.0 release)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;p&gt;I was officially added to rest-nvim organization and began to refactor the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; source code as the project maintainer.
-I released v3 version of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; in late August.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;september&quot;&gt;September&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;jeonsan-hanmadang-24-09&quot;&gt;Jeonsan-hanmadang (24.09)&lt;&#x2F;h3&gt;
-&lt;p&gt;I had a 30min talk with title &quot;50 CLI tips you won&#x27;t know&quot; in Air Force Intelligence Information Systems Management Group&#x27;s Lunar New Year event.&lt;&#x2F;p&gt;
-&lt;hr &#x2F;&gt;
-&lt;p&gt;I spent rest of the month maintaining &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt;. I learnt a lot about maintaining an open source project by it.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;october&quot;&gt;October&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;fediverse&quot;&gt;Fediverse&lt;&#x2F;h3&gt;
-&lt;p&gt;I made a fediverse(mastodon) and &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt; account.
-It took quite a time to fully understand the nature of fediverse.
-My conclusion about fediverse is: &lt;em&gt;barely unusable&lt;&#x2F;em&gt;. I&#x27;ll write more about it later.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;november&quot;&gt;November&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;bluesky&quot;&gt;Bluesky&lt;&#x2F;h3&gt;
-&lt;p&gt;I completely moved to &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;neovimconf-attendance&quot;&gt;Neovimconf attendance?&lt;&#x2F;h3&gt;
-&lt;p&gt;I attended &lt;a href=&quot;https:&#x2F;&#x2F;neovimconf.live&quot;&gt;Neovimconf2024&lt;&#x2F;a&gt; with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; but I was rejected. I realized that I&#x27;m not ready to share my projects and myself to public. This has made me pay more attention to my personal blog.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;neorg-mobile&quot;&gt;Neorg Mobile&lt;&#x2F;h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;boltless.bsky.social&#x2F;post&#x2F;3l7xosjjz2g2g&quot;&gt;bluesky post 1&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;boltless.bsky.social&#x2F;post&#x2F;3lahka3gsld2b&quot;&gt;bluesky post 2&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;You can see more posts in &lt;a href=&quot;https:&#x2F;&#x2F;boltless.bsky.social&quot;&gt;boltless.bsky.social&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;&#x2F;blockquote&gt;
-&lt;p&gt;As vhyrro seems to be busy with his different project; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorocks&#x2F;rocks&quot;&gt;rocks&lt;&#x2F;a&gt;, I started developing Neorg Mobile App instead of continue discussing about &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;. The repo is not in public yet, but I posted my progress in &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;december&quot;&gt;December&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;blog-zola&quot;&gt;blog (zola)&lt;&#x2F;h3&gt;
-&lt;p&gt;I made new blog with &lt;a href=&quot;https:&#x2F;&#x2F;getzola.org&quot;&gt;zola&lt;&#x2F;a&gt;. I implemented comment section using &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt; threads. It needs more works but it works.&lt;&#x2F;p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I&#x27;m using this blog as a temporary solution until &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; v2 is done.
-I will refactor my blog when it is ready, but the blog design will remain.&lt;&#x2F;p&gt;
-&lt;&#x2F;blockquote&gt;
-&lt;h1 id=&quot;2025-project-goals&quot;&gt;2025 project goals:&lt;&#x2F;h1&gt;
-&lt;ul&gt;
-&lt;li&gt;complete &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; v2&lt;&#x2F;li&gt;
-&lt;li&gt;complete &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;close all issues in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; repository&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
-&lt;p&gt;This article is outdated and I wrote a new one &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins-2025&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;&#x2F;div&gt;
-</description>
-      </item>
+      <atom:link href="https://boltless.me/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
       <item>
           <title>How to get human rights in Neovim without plugins (2025 edition)</title>
-          <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
+          <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
           <author>boltless</author>
-          <link>https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/</link>
-          <guid>https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/</guid>
-          <description xml:base="https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
+          <link>https://boltless.me/posts/neovim-config-without-plugins-2025/</link>
+          <guid>https://boltless.me/posts/neovim-config-without-plugins-2025/</guid>
+          <description xml:base="https://boltless.me/posts/neovim-config-without-plugins-2025/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This is a rewrite of &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins&#x2F;&quot;&gt;an article I wrote last year&lt;&#x2F;a&gt; based on my PoC Neovim config project: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
@@ -293,7 +213,7 @@ Fortunately, starting from v0.11, Neovim added this feature as a built-in API.&l
 External completion plugins not depending on builtin completions usually have better performance and provide way more customizability of how it looks and behaves.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;builtin-snippet-api&quot;&gt;Builtin snippet API&lt;&#x2F;h2&gt;
 &lt;p&gt;Lets have the snippet feature without plugins like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;L3MON4D3&#x2F;LuaSnip&quot;&gt;Luasnip&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;garymjr&#x2F;nvim-snippets&quot;&gt;nvim-snippets&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;p&gt;Neovim has built-in snippet API in &lt;code&gt;vim.snippet&lt;&#x2F;code&gt; since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengineer.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#enabling-lsp-completion&quot;&gt;LSP completion&lt;&#x2F;a&gt;.) But it still don&#x27;t provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.&lt;&#x2F;p&gt;
+&lt;p&gt;Neovim has built-in snippet API in &lt;code&gt;vim.snippet&lt;&#x2F;code&gt; since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the &lt;a href=&quot;https:&#x2F;&#x2F;boltless.me&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#enabling-lsp-completion&quot;&gt;LSP completion&lt;&#x2F;a&gt;.) But it still don&#x27;t provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.&lt;&#x2F;p&gt;
 &lt;p&gt;Instead, there is a similar feature called abbreviation (&lt;code&gt;:h Abbreviations&lt;&#x2F;code&gt;.) To briefly explain, if you register abbreviation in insert mode with &lt;code&gt;:iab ms Microsoft&lt;&#x2F;code&gt;, &lt;code&gt;ms&amp;lt;space&amp;gt;&lt;&#x2F;code&gt; or &lt;code&gt;ms&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt; will be replaced with &lt;code&gt;Microsoft&amp;lt;space&amp;gt;&lt;&#x2F;code&gt; and &lt;code&gt;Microsoft&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt;, respectively. This abbreviation can be triggered with the keymap &lt;code&gt;&amp;lt;c-]&amp;gt;&lt;&#x2F;code&gt; in addition to special characters such as &lt;code&gt;&amp;lt;space&amp;gt;&lt;&#x2F;code&gt;, &lt;code&gt;&amp;lt;cr&amp;gt;&lt;&#x2F;code&gt; or &lt;code&gt;()[]{}&amp;lt;&amp;gt;&#x27;&quot;,.&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;By using abbreviation and &lt;code&gt;vim.snippet&lt;&#x2F;code&gt;, we can implement the following snippet API.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;lua&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-lua &quot;&gt;&lt;code class=&quot;language-lua&quot; data-lang=&quot;lua&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;---@param trigger string trigger string for snippet
@@ -330,7 +250,6 @@ External completion plugins not depending on builtin completions usually have be
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;put this in &lt;code&gt;after&#x2F;ftplugin&#x2F;lua.lua&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;So when you type &lt;code&gt;fn&amp;lt;c-]&amp;gt;&lt;&#x2F;code&gt; in lua file, it will be expanded to this:&lt;&#x2F;p&gt;
-&lt;!-- TODO: replace with snippet photo --&gt;
 &lt;p&gt;&lt;img src=&quot;..&#x2F;IMG_1805.jpg&quot; alt=&quot;Neovim screenshot with lua function snippet expanded&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;treesitter-setup-without-any-plugins&quot;&gt;TreeSitter setup without any plugins&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;replacing-nvim-treesitter&quot;&gt;Replacing nvim-treesitter&lt;&#x2F;h3&gt;
@@ -415,7 +334,7 @@ You can read plugin readme &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ju
 &lt;&#x2F;details&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
 &lt;p&gt;So far, we’ve explored how to set up Neovim in its purest form, without relying on external plugins.&lt;&#x2F;p&gt;
-&lt;p&gt;As I mentioned in the &lt;a href=&quot;https:&#x2F;&#x2F;boltlessengineer.github.io&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#introduction&quot;&gt;Introduction&lt;&#x2F;a&gt;, this is not to suggest that plugins are bad or unnecessary.
+&lt;p&gt;As I mentioned in the &lt;a href=&quot;https:&#x2F;&#x2F;boltless.me&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;#introduction&quot;&gt;Introduction&lt;&#x2F;a&gt;, this is not to suggest that plugins are bad or unnecessary.
 Plugins serve specific purposes, and one of Neovim’s greatest strengths is its vast and diverse plugin ecosystem.
 Many plugins offer improved performance, extended functionality, or valuable abstractions that simplify configuration.&lt;&#x2F;p&gt;
 &lt;p&gt;If you find better way of doing some abstractions or you made some cool new features,
@@ -432,12 +351,92 @@ Plugins can make it better, but that doesn&#x27;t mean barebone Neovim is nothin
 </description>
       </item>
       <item>
+          <title>2024 Wrapped</title>
+          <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
+          <author>boltless</author>
+          <link>https://boltless.me/posts/2024-wrapped/</link>
+          <guid>https://boltless.me/posts/2024-wrapped/</guid>
+          <description xml:base="https://boltless.me/posts/2024-wrapped/">&lt;h2 id=&quot;january&quot;&gt;January&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;jeonsan-hanmadang-24-02&quot;&gt;Jeonsan-hanmadang (24.02)&lt;&#x2F;h3&gt;
+&lt;p&gt;I had a 30min talk about Neovim in Air Force Intelligence Information Systems Management Group&#x27;s Lunar New Year event.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;february-june&quot;&gt;February ~ June&lt;&#x2F;h2&gt;
+&lt;p&gt;I can&#x27;t remember exactly, but I spent most of my free time working on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; in first half of 2024.
+I now understand clearly why &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt; is so hard to implement and started fixing from &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;. Stable parser is only possible with stable syntax.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I did spent quite a time in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;, but I couldn&#x27;t remember what happened in timeline. Seems like I really need some way to log my works like this blog.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;july&quot;&gt;July&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;nativevim&quot;&gt;NativeVim&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1e5k1fn&#x2F;nativevim_a_neovim_config_without_any_plugins&quot;&gt;reddit post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;github&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins&quot;&gt;blog post&lt;&#x2F;a&gt; &lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; is a PoC config project I made to show Neovim&#x27;s builtin features.
+A lot more people showed interest than I expected, and I&#x27;m pretty proud of the results.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;blog-astro&quot;&gt;Blog (Astro)&lt;&#x2F;h3&gt;
+&lt;p&gt;I made a blog with &lt;a href=&quot;https:&#x2F;&#x2F;astro.build&quot;&gt;Astro&lt;&#x2F;a&gt; in a hurry just to share the blog post for &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt;.
+I originally intended to use &lt;a href=&quot;https:&#x2F;&#x2F;gohugo.io&quot;&gt;Hugo&lt;&#x2F;a&gt;, but I end up with Astro because I don&#x27;t have enough time to learn new SSG framework.&lt;&#x2F;p&gt;
+&lt;p&gt;I regret making a blog at that point. Simple gist can fit for my need. I can edit it later mentioning that the post has been moved to new blog.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;rest-nvim-tree-sitter-http&quot;&gt;rest-nvim&#x2F;tree-sitter-http&lt;&#x2F;h3&gt;
+&lt;p&gt;After seeing that &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; was archived, I made plans to resurrect it in my own.
+I started from fixing the core parser; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;tree-sitter-http&quot;&gt;tree-sitter-http&lt;&#x2F;a&gt; which had pretty many issues causing several &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; bugs.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;august&quot;&gt;August&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1eh0yr6&#x2F;restnvim_is_back&#x2F;&quot;&gt;reddit post - rest.nvim is back (from gorilla-moe)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;neovim&#x2F;comments&#x2F;1eyag2k&#x2F;restnvim_is_back_v30_release&#x2F;&quot;&gt;reddit post - rest.nvim is back!! (v3.0 release)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I was officially added to rest-nvim organization and began to refactor the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; source code as the project maintainer.
+I released v3 version of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; in late August.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;september&quot;&gt;September&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;jeonsan-hanmadang-24-09&quot;&gt;Jeonsan-hanmadang (24.09)&lt;&#x2F;h3&gt;
+&lt;p&gt;I had a 30min talk with title &quot;50 CLI tips you won&#x27;t know&quot; in Air Force Intelligence Information Systems Management Group&#x27;s Lunar New Year event.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;I spent rest of the month maintaining &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt;. I learnt a lot about maintaining an open source project by it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;october&quot;&gt;October&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;fediverse&quot;&gt;Fediverse&lt;&#x2F;h3&gt;
+&lt;p&gt;I made a fediverse(mastodon) and &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt; account.
+It took quite a time to fully understand the nature of fediverse.
+My conclusion about fediverse is: &lt;em&gt;barely unusable&lt;&#x2F;em&gt;. I&#x27;ll write more about it later.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;november&quot;&gt;November&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;bluesky&quot;&gt;Bluesky&lt;&#x2F;h3&gt;
+&lt;p&gt;I completely moved to &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;neovimconf-attendance&quot;&gt;Neovimconf attendance?&lt;&#x2F;h3&gt;
+&lt;p&gt;I attended &lt;a href=&quot;https:&#x2F;&#x2F;neovimconf.live&quot;&gt;Neovimconf2024&lt;&#x2F;a&gt; with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; but I was rejected. I realized that I&#x27;m not ready to share my projects and myself to public. This has made me pay more attention to my personal blog.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;neorg-mobile&quot;&gt;Neorg Mobile&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;boltless.bsky.social&#x2F;post&#x2F;3l7xosjjz2g2g&quot;&gt;bluesky post 1&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;boltless.bsky.social&#x2F;post&#x2F;3lahka3gsld2b&quot;&gt;bluesky post 2&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can see more posts in &lt;a href=&quot;https:&#x2F;&#x2F;boltless.bsky.social&quot;&gt;boltless.bsky.social&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;As vhyrro seems to be busy with his different project; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorocks&#x2F;rocks&quot;&gt;rocks&lt;&#x2F;a&gt;, I started developing Neorg Mobile App instead of continue discussing about &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt;. The repo is not in public yet, but I posted my progress in &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;december&quot;&gt;December&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;blog-zola&quot;&gt;blog (zola)&lt;&#x2F;h3&gt;
+&lt;p&gt;I made new blog with &lt;a href=&quot;https:&#x2F;&#x2F;getzola.org&quot;&gt;zola&lt;&#x2F;a&gt;. I implemented comment section using &lt;a href=&quot;https:&#x2F;&#x2F;bsky.app&quot;&gt;bluesky&lt;&#x2F;a&gt; threads. It needs more works but it works.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I&#x27;m using this blog as a temporary solution until &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; v2 is done.
+I will refactor my blog when it is ready, but the blog design will remain.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h1 id=&quot;2025-project-goals&quot;&gt;2025 project goals:&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;complete &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;norg-specs&quot;&gt;norg-specs&lt;&#x2F;a&gt; v2&lt;&#x2F;li&gt;
+&lt;li&gt;complete &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nvim-neorg&#x2F;tree-sitter-norg3&quot;&gt;tree-sitter-norg3&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;close all issues in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rest-nvim&#x2F;rest.nvim&quot;&gt;rest.nvim&lt;&#x2F;a&gt; repository&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;This article is outdated and I wrote a new one &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins-2025&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</description>
+      </item>
+      <item>
           <title>How to get human rights in Neovim without plugins</title>
           <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
           <author>boltless</author>
-          <link>https://boltlessengineer.github.io/posts/neovim-config-without-plugins/</link>
-          <guid>https://boltlessengineer.github.io/posts/neovim-config-without-plugins/</guid>
-          <description xml:base="https://boltlessengineer.github.io/posts/neovim-config-without-plugins/">&lt;blockquote&gt;
+          <link>https://boltless.me/posts/neovim-config-without-plugins/</link>
+          <guid>https://boltless.me/posts/neovim-config-without-plugins/</guid>
+          <description xml:base="https://boltless.me/posts/neovim-config-without-plugins/">&lt;blockquote&gt;
 &lt;p&gt;This article is outdated.
 I wrote new updated article &lt;a href=&quot;&#x2F;posts&#x2F;neovim-config-without-plugins-2025&#x2F;&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;

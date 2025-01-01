@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://boltlessengineer.github.io/sitemap.xml
+Sitemap: https://boltless.me/sitemap.xml

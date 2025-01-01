@@ -10,17 +10,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
-    <link rel="stylesheet" href="https://boltlessengineer.github.io/style.css?h=3ea6bc291774d89a5ef9">
-    <script src="https://boltlessengineer.github.io/bsky-comments.js?h=eca10a44a7b85a513335"></script>
+    <link rel="stylesheet" href="https://boltless.me/style.css?h=3ea6bc291774d89a5ef9">
+    <script src="https://boltless.me/bsky-comments.js?h=eca10a44a7b85a513335"></script>
     
     
     
         
-            <link rel="alternate" type="application/atom+xml" title="boltlessengineer - Atom Feed" href="https://boltlessengineer.github.io/atom.xml">
+            <link rel="alternate" type="application/atom+xml" title="boltlessengineer - Atom Feed" href="https://boltless.me/atom.xml">
         
     
         
-            <link rel="alternate" type="application/rss+xml" title="boltlessengineer - RSS Feed" href="https://boltlessengineer.github.io/rss.xml">
+            <link rel="alternate" type="application/rss+xml" title="boltlessengineer - RSS Feed" href="https://boltless.me/rss.xml">
         
     
     
@@ -28,7 +28,7 @@
 <body>
     
 <header class="space">
-    <a href="https:&#x2F;&#x2F;boltlessengineer.github.io">&LeftArrow; Home</a>
+    <a href="https:&#x2F;&#x2F;boltless.me">&LeftArrow; Home</a>
 </header>
 
     
@@ -36,7 +36,7 @@
     <h1>How to get human rights in Neovim without plugins (2025 edition)</h1>
     
     <p class="secondary small">
-        31 December, 2024
+        1 January, 2025
 
         
         
@@ -245,7 +245,7 @@ Fortunately, starting from v0.11, Neovim added this feature as a built-in API.</
 External completion plugins not depending on builtin completions usually have better performance and provide way more customizability of how it looks and behaves.</p>
 <h2 id="builtin-snippet-api">Builtin snippet API</h2>
 <p>Lets have the snippet feature without plugins like <a href="https://github.com/L3MON4D3/LuaSnip">Luasnip</a> or <a href="https://github.com/garymjr/nvim-snippets">nvim-snippets</a>.</p>
-<p>Neovim has built-in snippet API in <code>vim.snippet</code> since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the <a href="https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/#enabling-lsp-completion">LSP completion</a>.) But it still don't provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.</p>
+<p>Neovim has built-in snippet API in <code>vim.snippet</code> since v0.10, so most LSP-provided snippets just work (since v0.11, if you enable the <a href="https://boltless.me/posts/neovim-config-without-plugins-2025/#enabling-lsp-completion">LSP completion</a>.) But it still don't provide native API to make user-defined snippets that expands on specific keywords or trigger keymaps.</p>
 <p>Instead, there is a similar feature called abbreviation (<code>:h Abbreviations</code>.) To briefly explain, if you register abbreviation in insert mode with <code>:iab ms Microsoft</code>, <code>ms&lt;space&gt;</code> or <code>ms&lt;cr&gt;</code> will be replaced with <code>Microsoft&lt;space&gt;</code> and <code>Microsoft&lt;cr&gt;</code>, respectively. This abbreviation can be triggered with the keymap <code>&lt;c-]&gt;</code> in addition to special characters such as <code>&lt;space&gt;</code>, <code>&lt;cr&gt;</code> or <code>()[]{}&lt;&gt;'",.</code>.</p>
 <p>By using abbreviation and <code>vim.snippet</code>, we can implement the following snippet API.</p>
 <pre data-lang="lua" style="background-color:#2b303b;color:#c0c5ce;" class="language-lua "><code class="language-lua" data-lang="lua"><span style="color:#65737e;">---@param trigger string trigger string for snippet
@@ -282,7 +282,6 @@ External completion plugins not depending on builtin completions usually have be
 </span></code></pre>
 <p>put this in <code>after/ftplugin/lua.lua</code></p>
 <p>So when you type <code>fn&lt;c-]&gt;</code> in lua file, it will be expanded to this:</p>
-<!-- TODO: replace with snippet photo -->
 <p><img src="../IMG_1805.jpg" alt="Neovim screenshot with lua function snippet expanded" /></p>
 <h2 id="treesitter-setup-without-any-plugins">TreeSitter setup without any plugins</h2>
 <h3 id="replacing-nvim-treesitter">Replacing nvim-treesitter</h3>
@@ -367,7 +366,7 @@ You can read plugin readme <a href="https://github.com/junegunn/fzf/blob/master/
 </details>
 <h2 id="conclusion">Conclusion</h2>
 <p>So far, we’ve explored how to set up Neovim in its purest form, without relying on external plugins.</p>
-<p>As I mentioned in the <a href="https://boltlessengineer.github.io/posts/neovim-config-without-plugins-2025/#introduction">Introduction</a>, this is not to suggest that plugins are bad or unnecessary.
+<p>As I mentioned in the <a href="https://boltless.me/posts/neovim-config-without-plugins-2025/#introduction">Introduction</a>, this is not to suggest that plugins are bad or unnecessary.
 Plugins serve specific purposes, and one of Neovim’s greatest strengths is its vast and diverse plugin ecosystem.
 Many plugins offer improved performance, extended functionality, or valuable abstractions that simplify configuration.</p>
 <p>If you find better way of doing some abstractions or you made some cool new features,
@@ -386,8 +385,8 @@ Plugins can make it better, but that doesn't mean barebone Neovim is nothing.</p
 </main>
 
     <div class="dark-mode-buttons">
-        <button class="dark-mode-button" id="dark-mode-on"><img src="https://boltlessengineer.github.io/dark_mode.svg" width="24" height="24" alt="Dark mode" aria-label="dark mode toggle" title="Dark mode"></button>
-        <button class="dark-mode-button" id="dark-mode-off"><img src="https://boltlessengineer.github.io/light_mode.svg" width="24" height="24" alt="Light mode" aria-label="light mode toggle" title="Light mode"></button>
+        <button class="dark-mode-button" id="dark-mode-on"><img src="https://boltless.me/dark_mode.svg" width="24" height="24" alt="Dark mode" aria-label="dark mode toggle" title="Dark mode"></button>
+        <button class="dark-mode-button" id="dark-mode-off"><img src="https://boltless.me/light_mode.svg" width="24" height="24" alt="Light mode" aria-label="light mode toggle" title="Light mode"></button>
     </div>
     <script>
         const cls = document.querySelector("html").classList;
