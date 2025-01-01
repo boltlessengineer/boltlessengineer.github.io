@@ -350,7 +350,7 @@ you can extract that config as a standalone plugin. That&#x27;s how Neovim&#x27;
 &lt;p&gt;&lt;strong&gt;But&lt;&#x2F;strong&gt; using Neovim without plugins is entirely possible and really worth trying.&lt;&#x2F;p&gt;
 &lt;p&gt;While I don’t use a strict &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;zero-plugin configuration&lt;&#x2F;a&gt; daily, my &lt;a href=&quot;http:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;nvim_rocks&quot;&gt;main Neovim setup&lt;&#x2F;a&gt; avoids many &lt;em&gt;must have&lt;&#x2F;em&gt; plugins.
 I’ve also enjoyed experimenting with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; configurations from time to time.
-Also, configuring &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; is fairly easier then other configs I&#x27;ve made because I can fully focus on my preferences and not on making decent IDE.&lt;&#x2F;p&gt;
+Also, I found configuring &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boltlessengineer&#x2F;NativeVim&quot;&gt;NativeVim&lt;&#x2F;a&gt; feels fairly easier then other configs I&#x27;ve made because I can fully focus on my preferences and not on making decent IDE combining 15 different plugins.&lt;&#x2F;p&gt;
 &lt;p&gt;Neovim is already a decent IDE on itself.&lt;br &#x2F;&gt;
 Plugins can make it better, but that doesn&#x27;t mean barebone Neovim is nothing.&lt;&#x2F;p&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
