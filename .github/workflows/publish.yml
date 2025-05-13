@@ -1,0 +1,41 @@
+name: Publish to GH Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: action-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Clone norgolith
+        run: |
+          git clone https://github.com/boltlessengineer/norgolith
+          cd norgolith
+          git checkout norg-dialect
+
+      - name: Install norgolith
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: --release --path .
+
+      - name: Use it
+        run: lith build
+
+      - name: Deploy to GH Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
