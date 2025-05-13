@@ -22,18 +22,21 @@ jobs:
         id: janet-ver
       - name: download janet
         run: curl -LO https://github.com/janet-lang/janet/releases/download/v1.38.0/janet-v1.38.0-linux-x64.tar.gz
+      - name: "set prefix"
+        run: echo "PREFIX=$GITHUB_WORKSPACE/.janet" >> $GITHUB_ENV
+        shell: bash
+      - name: "mkdir"
+        run: mkdir -p $PREFIX
       - name: extract janet
-        run: tar -xvzf janet-v1.38.0-linux-x64.tar.gz
-      - name: add directory to path
-        run: echo "::add-path::janet-${{ steps.janet-ver.outputs.tag }}-linux"
-      - name: make modules directory
-        run: mkdir modules
-      - name: set JANET_PATH
-        run: echo "::set-env name=JANET_PATH::modules"
-      - name: set JANET_LIBPATH
-        run: echo "::set-env name=JANET_LIBPATH::janet-${{ steps.janet-ver.outputs.tag }}-linux"
-      - name: set JANET_HEADERPATH
-        run: echo "::set-env name=JANET_HEADERPATH::janet-${{ steps.janet-ver.outputs.tag }}-linux"
+        run: tar -xvzf janet-v1.38.0-linux-x64.tar.gz --strip-components=2 -C $PREFIX
+      - name: "set paths"
+        run: |
+          echo "$PREFIX/bin" >> $GITHUB_PATH
+          echo "JANET_HEADERPATH=$PREFIX/include" >> $GITHUB_ENV
+          echo "JANET_BINPATH=$PREFIX/bin" >> $GITHUB_ENV
+          echo "JANET_LIBPATH=$PREFIX/lib" >> $GITHUB_ENV
+          echo "JANET_MANPATH=$PREFIX/man" >> $GITHUB_ENV
+          echo "JANET_PATH=$PREFIX" >> $GITHUB_ENV
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
