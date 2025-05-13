@@ -43,8 +43,9 @@ jobs:
 
       - name: Clone norgolith
         uses: actions/checkout@v4
-        repository: 'boltlessengineer/norgolith'
-        ref: norg-dialect
+        with:
+          repository: 'boltlessengineer/norgolith'
+          ref: norg-dialect
 
       - name: Install norgolith
         uses: actions-rs/cargo@v1
