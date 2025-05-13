@@ -46,6 +46,7 @@ jobs:
         with:
           repository: 'boltlessengineer/norgolith'
           ref: norg-dialect
+          path: norgolith
 
       - name: Install norgolith
         uses: actions-rs/cargo@v1
