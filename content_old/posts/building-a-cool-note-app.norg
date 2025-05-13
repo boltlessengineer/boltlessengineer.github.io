@@ -1,0 +1,92 @@
+@document.meta
+title: Building a Note App with Cutting-Edge technologies
+description: Building a Note App with Cutting-Edge technologies
+authors: [boltless]
+created: 2025-04-15T14:24:47+00:00
+updated: 2025-04-15T14:24:47+00:00
+draft: false
+@end
+
+* Building a Note App with Cutting-Edge technologies
+
+It's been more than a month since I've last wrote a blog post. I haven't wrote a summary post for "31 days of daily Neovim tips" project I did on January.
+
+If you let me make some excuses, I've been busy for last 4 month... now I should really wrote some blog posts. I have to spend most of my time in the office in March but it is pretty hard to remote-access to my machine there. So I decided to make a simple note app to write some blog posts in my office.
+
+** Choosing tools
+
+These are tools I choose to make this note app.
+
+- Rust(Axum) (for backend)
+- sqlite3 (for DB)
+- redis (for session management)
+- HTMX (for views)
+- Askama (as a template engine)
+- CodeMirror6 (for editor core)
+- tailwindcss v4 (for styling)
+
+Below are detailed reasons why I choosed each one of these.
+
+*** Rust
+
+I first tried making an app with golang & net/http package. But I just can't enjoy developing web server with golang.
+
+Don't get me wrong. I don't think golang is bad or not a language suitable for backend development. I just don't want to build a web server with go this time. Go's syntax is simple, having powerful GC can make me really productive. But that's not what I want this time.
+
+I don't want a language that doesn't have an optional type (not specifically enum but any kinds of optional values, including null). Using pointer only to represent something is "None" is pretty annoying. Returning additional boolean ok value to indicate the existence feels tedious.
+
+I was "go is a best backend programming language" kind of person since I've first learn golang. I still kinda think this is valid statement. But this time, I keep imagine using rust. I miss the enum, concrete error types, and proper macros to generate rust codes.
+
+Until now, I'm quite enjoying using rust.
+
+*** Axum
+
+I choose Axum because it seems to be most extensible rust web framework.
+
+Maybe I'll try loco which is a fullstack web framework that uses axum internally. Or manually following loco's code structure with pure Axum might be helpful.
+
+*** Sqlite3
+
+I was bothered to run postgresql service in background. This is my first complete SaaS project, so I want some simple database solution which I can easily backup entire DB by just copy-paste the file.
+
+I was also curious about the developer experience with Sqlite. I don't doubt its performance but I was suspecious about using simple, dynamic typed database in SaaS project. Not having first-class timestamp, UUID supports is pretty wild.
+
+I still haven't settled my thoughts about sqlite. It seems to be working... but really? Yes, it is minimal, but is "no-timestamp, no-UUID" thingy a "enough tool" for my need?
+
+*** Redis
+
+I know about the recent drama around Redis. I just be tired to use yet another bleeding edge, experiemental technology to this single project. So I choose good old Redis. It's just a key-value in-memory storage, how hard would it be to change it later?
+
+*** HTMX
+
+Yep. I'm on HTMX-hype. Same to Sqlite3, I want to test this and see if this is a real thing. I was curious about server-component-only approach on web development.
+
+*** Askama
+
+When I tried golang, I used golang's standard template/html package. I didn't enjoyed using it. I don't like the inheritance oriented approach of template/html package. I think it isn't suitable for HTMX. HTMX requires more component oriented approach on structuring HTML templates. I also didn't like having runtime errors (I parsed the template on app start and still get error on request WTH.) I think I should have tried templ now though.
+
+So I choose one of famous HTML based, compile-time generated template engine for rust.
+
+aaaaand I regret using it.
+
+Compile time in rust is real. It's awful to wait for few seconds on every single tailwind class changes.
+
+I might change this to minijinja or tera later.
+
+*** CodeMirror6
+
+I just hooked the tree-sitter-editor project I made while developing Neorg-Mobile. I wrote the reason behind choosing CodeMirror6 .
+
+I also used web-components to abstract the editor component and find several interesting issues with it. But this will be whole seperate blog post.
+
+*** TailwindCSS
+
+I don't want to write CSS on my own. I don't want to bother with CSS selectors. So choosing TailwindCSS was quite reasonable for me.
+
+I enjoyed using it and haven't find any issues with it.
+
+** Further developing
+
+My note app is now working. Styling is terrible and there are may missing features (afraid to loose your document accidently? Don't implement delete feature.) But I'm satisfied with current result so I will go with this.
+
+I will focus on writing actual documents/posts from now and will come back to upgrade this web based note app later.

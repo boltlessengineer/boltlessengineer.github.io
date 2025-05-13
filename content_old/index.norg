@@ -1,0 +1,21 @@
+@document.meta
+title: Home
+created: 2025-04-15T14:24:47+00:00
+updated: 2025-04-15T14:24:47+00:00
+draft: false
+layout: home
+@end
+
+{https://github.com/boltlessengineer}[github]
+{https://bsky.app/profile/boltless.me}[bluesky]
+
+* Hello
+
+Welcome to my blog! I'm currently testing my blog & knowledge management system
+using my {https://github.com/boltlessengineer/norgolith/tree/norg-dialect}[norgolith fork].
+
+You can see the full neorg roadmap {:roadmap}[here].
+
+#(html.style display: none)
+- [neorg-language-server]{https://github.com/boltlessengineer/neorg-language-server}
+- [norgolith]{https://github.com/NTBbloodbath/norgolith}

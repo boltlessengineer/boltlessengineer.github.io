@@ -1,0 +1,91 @@
+@document.meta
+title: Test Page
+description: Page to test commonnorg HTML exporter
+created: 2025-05-11T12:14:48+00:00
+updated: 2025-05-11T12:14:48+00:00
+draft: false
+@end
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+* Ideas
+
+- an `[anchor]` can be a form of /link value/ in Norg.
+  so I can /auto-import/ the link and just use `[this]` syntax all over the document.
+  This will be the implementation of obsidian style wiki-link in Norg.
+- `category.template.norg` file to automatically create category page from given category name.
+
+** Macro ideas
+
+- import git information as document meta (e.g. `created` and `updated` fields)
+- show git history of that current note in HTML
+
+* heading text
+
+@code
+/inline markup _including nested ones_ works well/(html.style color: green)
+@end
+
+/inline markup _including nested ones_ works well/(html.style color: green)
+
+`w` <- this is inline verbatim
+
+*** Horizontal Image Test
+
+.image assets/image.png
+
+*** Vertical Image Test
+
+.image assets/sui.jpeg
+
+* More tests
+
+@embed html
+<div style="text-align: center">
+this text is centered
+</div>
+@end
+
+@code python
+print("hello world")
+@end
+
+@eval
+# add custom tag while exporting document
+(put norg/ast/tag
+     "\\gh"
+     (fn [ctx [src] markup]
+       [{:kind :link
+         :target (string "https://github.com/" src)
+         :markup [{:kind :text
+                   :text src}]}]))
+@end
+
+- {https://github.com/boltlessengineer}[link with /markups/](html.class my-class)
+- [anchor]{https://example.com} : `[anchor]{https://example.com}`
+- can be used again like this: [anchor]
+
+- list item with
+/ multiple
+/ paragraphs
+
+>
+~~ list just under blockquote
+~~ list item with code block:
+~~ @code janet
+   # add custom tag while exporting document
+   (put norg/ast/tag
+        "\\gh"
+        (fn [ctx [src] markup]
+          [{:kind :link
+            :target (string "https://github.com/" src)
+            :markup [{:kind :text
+                      :text src}]}]))
+   @end
+~~ or you can put code block after paragraph inside list item
+// @code
+   like this
+   @end
+~~ asdf
+--- nested
+--- list

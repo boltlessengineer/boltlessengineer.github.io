@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ config.language }}">
+<head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    {% if metadata.description and not metadata.description == "nil" %}
+    <meta name="description" content="{{ metadata.description }}" />
+    {% endif %}
+    {% if metadata.authors %}
+    <meta name="author" content="{{ config.author }}" />
+    {% endif %}
+    {% if metadata.categories %}
+    <meta name="keywords" content="{{ metadata.categories | join(sep=", ") }}" />
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if config.highlighter is defined and config.highlighter.enable %}
+      {# If highlighter is enabled but the engine is not defined then fallback to prismjs #}
+      {% if config.highlighter.engine is not string or config.highlighter.engine == "prism" %}
+        {# PrismJS #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+      {% elif config.highlighter.engine is defined and config.highlighter.engine == "hljs" %}
+        {# Highlight.js #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+      {% elif config.highlighter.engine is string and config.highlighter.engine not in ["prism", "hljs"] %}
+        <script>
+          window.alert("Warning: highlighter is enabled in the site configuration but its engine is not 'prism' nor 'hljs'");
+        </script>
+      {% endif %}
+    {% endif %}
+    {# Favicons #}
+    {# TODO: set icons based on https://stackoverflow.com/a/48969053/13150270 #}
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+    {# User-defined styling #}
+    <link rel="stylesheet" href="/assets/style.css?v========================" />
+    <title>{% block title %}{% endblock title %}</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block header %}
+    <header>
+        <nav>
+            <span><a href="/">boltless.me</a></span>
+            <ul>
+                <li><a href="/about">about</a></li>
+                <li><a href="/doro">doro</a></li>
+                <li><a href="/posts">blog</a></li>
+                <li><a href="/projects">projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% endblock header %}
+    <main>{% block content %}{% endblock content %}</main>
+    {% block footer %}
+    <footer>
+        Copyright &copy; {{ now(format="%Y") }} by {{ config.author }}.
+    </footer>
+    {% endblock footer %}
+</body>
+</html>

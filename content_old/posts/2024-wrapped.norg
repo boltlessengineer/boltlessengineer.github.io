@@ -1,0 +1,124 @@
+@document.meta
+title: 2024 Wrapped
+description: What did I do in 2024
+created: 2024-12-31T15:50:13+00:00
+updated: 2025-05-11T15:50:13+00:00
+categories: [
+  yearly-wrapped
+]
+extra: {
+  comment: https://bsky.app/profile/boltless.bsky.social/post/3lemazpyc7s2p
+}
+@end
+
+* January
+
+** Jeonsan-hanmadang (24.02)
+
+I had a 30min talk about Neovim in Air Force Intelligence Information Systems Management Group's Lunar New Year event.
+
+* February ~ June
+
+I can't remember exactly, but I spent most of my free time working on [tree-sitter-norg3] and [norg-specs] in first half of 2024.
+I now understand clearly why [tree-sitter-norg3] is so hard to implement and started fixing from [norg-specs]. Stable parser is only possible with stable syntax.
+
+> I did spent quite a time in [norg-specs], but I couldn't remember what happened in timeline. Seems like I really need some way to log my works like this blog.
+
+* July
+
+** NativeVim
+
+- {https://www.reddit.com/r/neovim/comments/1e5k1fn/nativevim_a_neovim_config_without_any_plugins}[reddit post]
+- {https://github.com/boltlessengineer/NativeVim}[github]
+- {:$/posts/neovim-config-without-plugins}[blog post] {#footnote-1}[^1]
+
+[NativeVim] is a PoC config project I made to show Neovim's builtin features.
+A lot more people showed interest than I expected, and I'm pretty proud of the results.
+
+** Blog (Astro)
+
+I made a blog with [Astro] in a hurry just to share the blog post for [NativeVim].
+I originally intended to use [Hugo], but I end up with Astro because I don't have enough time to learn new SSG framework.
+
+I regret making a blog at that point. Simple gist can fit for my need. I can edit it later mentioning that the post has been moved to new blog.
+
+** rest-nvim/tree-sitter-http
+
+After seeing that [rest.nvim] was archived, I made plans to resurrect it in my own.
+I started from fixing the core parser; [tree-sitter-http] which had pretty many issues causing several [rest.nvim] bugs.
+
+* August
+
+- {https://www.reddit.com/r/neovim/comments/1eh0yr6/restnvim_is_back/}[reddit post - rest.nvim is back (from gorilla-moe)]
+- {https://www.reddit.com/r/neovim/comments/1eyag2k/restnvim_is_back_v30_release/}[reddit post - rest.nvim is back!! (v3.0 release)]
+
+I was officially added to rest-nvim organization and began to refactor the [rest.nvim] source code as the project maintainer.
+I released v3 version of [rest.nvim] in late August.
+
+* September
+
+** Jeonsan-hanmadang (24.09)
+
+I had a 30min talk with title "50 CLI tips you won't know" in Air Force Intelligence Information Systems Management Group's Lunar New Year event.
+___
+
+I spent rest of the month maintaining [rest.nvim]. I learnt a lot about maintaining an open source project by it.
+
+* October
+
+** Fediverse
+
+I made a fediverse(mastodon) and [bluesky] account.
+It took quite a time to fully understand the nature of fediverse.
+My conclusion about fediverse is: *barely unusable*. I'll write more about it later.
+
+* November
+
+** Bluesky
+
+I completely moved to [bluesky].
+
+** Neovimconf attendance?
+
+I attended [Neovimconf]2024 with [NativeVim] but I was rejected. I realized that I'm not ready to share my projects and myself to public. This has made me pay more attention to my personal blog.
+
+** Neorg Mobile
+
+- {https://bsky.app/profile/boltless.bsky.social/post/3l7xosjjz2g2g}[bluesky post 1]
+- {https://bsky.app/profile/boltless.bsky.social/post/3lahka3gsld2b}[bluesky post 2]
+
+> You can see more posts in {https://boltless.bsky.social}[boltless.bsky.social]
+
+As vhyrro seems to be busy with his different project; [rocks], I started developing Neorg Mobile App instead of continue discussing about [norg-specs]. The repo is not in public yet, but I posted my progress in [bluesky].
+
+* December
+
+** blog (zola)
+
+I made new blog with [zola]. I implemented comment section using [bluesky] threads. It needs more works but it works.
+
+> I'm using this blog as a temporary solution until [norg-specs] v2 is done.
+> I will refactor my blog when it is ready, but the blog design will remain.
+
+* 2025 project goals:
+
+- complete [norg-specs] v2
+- complete [tree-sitter-norg3]
+- close all issues in [rest.nvim] repository
+___
+
+* (footnotes) Footnotes
+- (html.id footnote-1) This article is outdated and I wrote a new one {:$/posts/neovim-config-without-plugins-2025}[here].
+
+#(html.style display: none)
+- [Neovimconf]{https://neovimconf.live}
+- [NativeVim]{https://github.com/boltlessengineer/NativeVim}
+- [bluesky]{https://bsky.app}
+- [tree-sitter-norg3]{https://github.com/nvim-neorg/tree-sitter-norg3}
+- [norg-specs]{https://github.com/nvim-neorg/norg-specs}
+- [rest.nvim]{https://github.com/rest-nvim/rest.nvim}
+- [tree-sitter-http]{https://github.com/rest-nvim/tree-sitter-http}
+- [zola]{https://getzola.org}
+- [Astro]{https://astro.build}
+- [Hugo]{https://gohugo.io}
+- [rocks]{https://github.com/nvim-neorocks/rocks}

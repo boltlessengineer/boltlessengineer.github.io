@@ -1,0 +1,16 @@
+rootUrl = "https://blog.boltless.dev"
+language = "en-US"
+title = "boltlessengineer"
+author = "boltless"
+
+# Code blocks highlighting
+[highlighter]
+enable = true
+# engine = "prism" # Can be "prism" or "hljs". Defaults to "prism"
+
+# RSS feed
+[rss]
+enable = false
+description = "Latest posts"
+ttl = 60
+image = "assets/favicon.ico"

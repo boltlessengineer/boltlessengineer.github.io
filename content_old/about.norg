@@ -1,0 +1,13 @@
+@document.meta
+title: About
+description: About Me
+authors: [boltless]
+created: 2025-04-16T12:33:29+00:00
+updated: 2025-04-16T12:33:29+00:00
+draft: false
+layout: default
+version: 1.1.1
+@end
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Lobortis scelerisque fermentum dui faucibus in ornare.

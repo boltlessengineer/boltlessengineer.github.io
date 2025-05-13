@@ -1,0 +1,28 @@
+@document.meta
+title: Neorg Roadmap
+created: 2025-05-11T18:28:41+00:00
+updated: 2025-05-11T18:28:41+00:00
+@end
+
+* Neorg with CommonNorg roadmap
+
+- (x) finish the {:/doro/commonnorg}[CommonNorg] spec
+- (x) commonnorg parser in tree-sitter
+- (x) tag system to extend the norg's capability
+- (x) norg to html converter
+- (x) norg link system in both [neorg-language-server] & [norgolith]
+- ( ) make a blog
+-- (x) convert existing markdown blog articles to commonnorg
+-- (x) fill missing metadata fields in PKM repository
+-- ( ) test if PKM repository can be fully converted to HTML
+-- ( ) setup github repository & action to automate the SSG
+-- ( ) rss support
+--- ( ) add config field `rss.path = ["posts/*"]` to customize pages that should be added to rss feed.
+-- ( ) better style (bring back zola theme)
+- ( ) list target completion in [neorg-language-server]
+- ( ) rewrite commonnorg parser in rust
+- ( ) better Neovim support (indentexpr, etc)
+
+#(html.style display: none)
+- [neorg-language-server]{https://github.com/boltlessengineer/neorg-language-server}
+- [norgolith]{https://github.com/NTBbloodbath/norgolith}
