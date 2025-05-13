@@ -30,7 +30,7 @@ jobs:
         with:
           command: install
           args: --path .
-        working-directory: norgolith
+          working-directory: norgolith
 
       - name: Use it
         run: lith build
