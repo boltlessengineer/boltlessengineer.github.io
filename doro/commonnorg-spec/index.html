@@ -75,7 +75,7 @@ tag_params = IM_TOO_LAZY_TO_WRITE_THIS
 
 space = " "+
 eol = space? ("\r\n" / "\r" / "\n" / "\0")
-</code></pre></figure></section><section><h1>Assumptions</h1><ul><li><p>Every line ends with one of <code>TODO_INLINErTODO_INLINEn</code>, <code>TODO_INLINEn</code> or <code>TODO_INLINEr</code>.</p> <p>This helps us writing cleaner PEG expressions.</p><li><p>We ignore all other inline whitespace characters except " " (U+0020)</p> <p>Same. To write cleaner PEG expressions.</p></ul></section><section><h1>Fundamental Building Blocks</h1><figure><pre><code>space = " "+
+</code></pre></figure></section><section><h1>Assumptions</h1><ul><li><p>Every line ends with one of <code>\r\n</code>, <code>\n</code> or <code>\r</code>.</p> <p>This helps us writing cleaner PEG expressions.</p><li><p>We ignore all other inline whitespace characters except " " (U+0020)</p> <p>Same. To write cleaner PEG expressions.</p></ul></section><section><h1>Fundamental Building Blocks</h1><figure><pre><code>space = " "+
 eol = space? ("\r\n" / "\r" / "\n" / "\0")
 whitespace = (eol? space)
 </code></pre></figure><p>Note that <code>eol</code> includes trailing whitespaces before line end.</section><section><h1>Heading</h1><figure><pre><code>heading = heading_prefix space (attributes space)? paragraph_segment
