@@ -16,19 +16,7 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
 
-      - name: Prepare deployment directory
-        run: |
-          mkdir gh-pages
-          cp -r public/* gh-pages/
-
-      - name: Commit and push changes
-        working-directory: gh-pages
-        run: |
-          git init
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git switch -c gh-pages
-          git add .
-          git commit -m "Deploy from public directory on main branch: ${{ github.sha }}"
-          git push --force origin gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
