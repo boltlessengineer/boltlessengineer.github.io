@@ -118,7 +118,7 @@ li input[type="checkbox"] + p {
   display: inline-block;
 }
 
-article figure {
+article figure:has(> img) {
   max-height: max(32ch, 50vh);
 }
 
