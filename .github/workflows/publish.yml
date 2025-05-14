@@ -1,6 +1,7 @@
 name: Publish to GH Pages
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - public/**
@@ -29,7 +30,7 @@ jobs:
         working-directory: gh-pages
         run: |
           git init
-          git remote add origin https://github.com/${{ github.repository }}.git
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git switch -c gh-pages
           git add .
           git commit -m "Deploy from public directory on main branch: ${{ github.sha }}"
