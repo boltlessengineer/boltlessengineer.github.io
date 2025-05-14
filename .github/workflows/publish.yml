@@ -32,7 +32,7 @@ jobs:
           git remote add origin https://github.com/${{ github.repository }}.git
           git switch -c gh-pages
           git add .
-          git commit -m "Deploy from public directory on main branch: ${{ github.sha }}
+          git commit -m "Deploy from public directory on main branch: ${{ github.sha }}"
           git push --force origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
