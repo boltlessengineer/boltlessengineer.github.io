@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="assets/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ config.title }}</title>
@@ -23,8 +24,7 @@
       <title>{{ post.title }}</title>
       <link>{{ post.permalink | escape_xml | safe }}</link>
       <guid>{{ post.permalink | escape_xml | safe }}</guid>
-      <description>{{ post.description }}</description>
-      <author>{{ post.authors | join(sep=", ") }}</author>
+      {% if post.description %}<description>{{ post.description }}</description>{% endif %}
       <pubDate>{{ post.created | date(format="%a, %d %b %Y %H:%M:%S %z") }}</pubDate>
       {% if post.categories %}{% for category in post.categories %}<category>{{ category }}</category>{% endfor %}{% endif %}
     </item>

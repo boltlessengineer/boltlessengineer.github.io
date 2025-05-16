@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="assets/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>boltlessengineer</title>
+    <link>https://boltless.me</link>
+    <description>Latest posts</description>
+    <generator>Norgolith</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 16 May 2025 15:31:56 +0000</lastBuildDate>
+    <ttl>60</ttl>
+    <atom:link href="https:&#x2F;&#x2F;boltless.me/rss.xml" rel="self" type="application/rss+xml" />
+
+    <image>
+      <url>https://boltless.meassets&#x2F;favicon.ico</url>
+      <title>boltlessengineer</title>
+      <link>https://boltless.me</link>
+      <width>144</width>
+      <height>144</height>
+    </image>
+
+    
+    <item>
+      <title>2024 Wrapped</title>
+      <link>https://boltless.me/posts/2024-wrapped/</link>
+      <guid>https://boltless.me/posts/2024-wrapped/</guid>
+      <description>What did I do in 2024</description>
+      <pubDate>Tue, 31 Dec 2024 15:50:13 +0000</pubDate>
+      <category>yearly-wrapped</category>
+    </item>
+    
+    <item>
+      <title>How to get human rights in Neovim without plugins (2025 edition)</title>
+      <link>https://boltless.me/posts/neovim-config-without-plugins-2025/</link>
+      <guid>https://boltless.me/posts/neovim-config-without-plugins-2025/</guid>
+      <description>How to get basic LSP, TreeSitter, completion and snippet supports in Neovim without any plugins</description>
+      <pubDate>Tue, 31 Dec 2024 14:24:47 +0000</pubDate>
+      <category>neovim</category><category>nativevim</category>
+    </item>
+    
+  </channel>
+</rss>

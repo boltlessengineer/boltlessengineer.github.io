@@ -10,7 +10,7 @@ enable = true
 
 # RSS feed
 [rss]
-enable = false
+enable = true
 description = "Latest posts"
 ttl = 60
 image = "assets/favicon.ico"
