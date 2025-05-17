@@ -17,6 +17,8 @@
         <p>
         </p>
         <h1>Recent blog posts</h1>
+        <main>
+        <div>
         <xsl:for-each select="/rss/channel/item">
           <div>
             <xsl:value-of select="pubDate"/>
@@ -35,6 +37,8 @@
             </p>
           </xsl:if>
         </xsl:for-each>
+        </div>
+        </main>
       </body>
     </html>
   </xsl:template>
