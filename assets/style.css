@@ -32,26 +32,31 @@
   padding: 0;
 }
 
-body {
-  color: #eeeeee;
-  background-color: #161616;
-  width: auto;
-  height: 100%;
+html {
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --article-width: 600px;
   --gutter-width: max(0px, calc((50vw - 300px) / 7));
 }
 
-body > header {
+body {
+  color: #eeeeee;
+  background-color: #161616;
+  width: auto;
+  height: 100%;
   margin-inline: 8px;
-  display: flex;
-  justify-content: center;
+}
+
+body > * {
+  max-width: var(--article-width);
+  margin-inline: auto;
+}
+
+body > header {
+  /*width: calc(var(--article-width) + var(--gutter-width) * 2);*/
   margin-block-start: 1em;
 }
 body > header > nav {
   display: flex;
-  width: var(--article-width);
-  /*width: calc(var(--article-width) + var(--gutter-width) * 2);*/
   justify-content: space-between;
 }
 
@@ -68,7 +73,6 @@ body > header a {
 }
 
 body > footer {
-  padding-inline: 8px;
   padding-block: 2em;
   display: flex;
   justify-content: center;
@@ -86,16 +90,6 @@ code {
 
 a {
   color: #618fea;
-}
-
-main {
-  padding-inline: 8px;
-  display: flex;
-  justify-content: center;
-}
-main > * {
-  width: 100%;
-  max-width: var(--article-width);
 }
 
 article p,

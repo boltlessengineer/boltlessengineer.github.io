@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ metadata.title }} - {{ config.title }}{% endblock title %}
 {% block content %}
-<div>
 <h1>{{ metadata.title }}</h1>
 <article>
 {{ content | safe }}
 </article>
-</div>
 {% endblock content %}
 {% block footer %}
 <footer>
