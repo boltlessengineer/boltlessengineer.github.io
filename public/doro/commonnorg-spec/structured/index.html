@@ -1,0 +1,94 @@
+<!doctypehtml><html lang=en-US><meta charset=UTF-8><meta content=width=device-width,initial-scale=1.0 name=viewport><link href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><link href=https://boltless.me/assets/favicon.ico rel=icon type=image/x-icon><link href=https://boltless.me/assets/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://boltless.me/assets/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=https://boltless.me/assets/style.css?v======================== rel=stylesheet><title>CommonNorg Spec (Structured) - boltlessengineer</title><body><header><nav><span><a href=https://boltless.me/>boltless.me</a></span><ul><li><a href=https://boltless.me/about>about</a><li><a href=https://boltless.me/posts>blog</a><li><a href=https://boltless.me/doro>doro</a><li><a href=https://boltless.me/projects>projects</a><li><a href=https://boltless.me/rss.xml>rss</a></ul></nav></header><main><h1>CommonNorg Spec (Structured)</h1><article><section><h1>Structured Document</h1><details><summary>PEG expression</summary><figure><pre><code>structured_document = section_content*
+
+section_content = section
+                / section_delimiter
+                / block
+</code></pre></figure></details><p>Base building block of the <strong>structured document</strong> is <strong>flat block</strong> from previous section. (Technically in PEG, we have to <em>unpack</em> the <code>flat_block</code> to match by indent and <code>base_block</code> kinds)<p>I'll explain why we have this kind of two-layer parsing in macro system section.<p>Using the basic components introduced earlier, the following concepts are newly introduced:<ul><li><p>Section / Section Delimiter</p><li><p>Indent Groups</p></ul><section><h2>Section / Section Delimiter</h2><details><summary>PEG expression</summary><figure><pre><code>section = heading section_content*
+
+section_delimiter = blank_heading
+
+section_content = section
+                / section_delimiter
+                / block
+</code></pre></figure></details><p>A section is basically renamed version of <a href=https://github.com/nvim-neorg/norg-specs/blob/82d7f7fa066066b997056bfdb1ab30ca336307e8/1.0-specification.norg#L219>heading</a> from v1 spec.<p>A section has a single heading and contains the following items as its children:<ul><li><p>other <strong>sections</strong> with lower level</p><li><p><strong>section delimiters</strong> with lower level</p><li><p>blocks</p></ul><p>A <strong>section delimiter</strong> is an unindented <strong>blank heading</strong>. Because it has level and won't greedly consume following blocks as content, we can use it to end the section.<figure><pre><code>* heading 1
+
+  paragraph under level 1 section
+
+** heading 2
+
+   paragraph under level 2 section
+
+*** heading 3
+
+    paragraph under level 3 section
+
+**
+
+  paragraph under section 1
+
+  We just jumped from level 3 section to level 1 section.
+
+*
+paragraph outside of level 1 section
+</code></pre></figure><details><summary>In CST:</summary><blockquote><p><code>blank_line</code> nodes omitted for readability</blockquote> <figure><pre><code class=language-scheme>(section ; level 1 section
+  heading: (heading title: (title))
+  (paragraph)
+  (section
+    heading: (heading title: (title))
+    (paragraph)
+    (section
+      heading: (heading title: (title))
+      (paragraph)))
+  (section_delimiter)
+  (paragraph)
+  (paragraph))
+(section_delimiter)
+(paragraph)
+</code></pre></figure></details></section><section><h2>Indent Groups</h2><details><summary>PEG expression</summary><blockquote><p>Indentation level is quite important here with context-sensitive parsing. So I'm using special generic syntax like <code>&LTA></code> to compare indentation levels.</blockquote> <figure><pre><code>indented_group = unordered_list
+               / ordered_list
+               / quote
+
+unordered_list&LTA> = unordered_list_item&LTA>+
+
+# where: B >= A && C > A
+unordered_list_item&LTA> = unordered_indented_block&LTA>
+                         (null_indented_block&LTB> / indented_group&LTC>)*
+
+# L: indent level
+unordered_indented_block&LTL> = unordered_indent&LTL>
+                              whitespace
+                              (attributes whitespace)?
+                              base_block
+
+# L: indent level
+null_indented_block&LTL> = null_indent&LTL>
+                         whitespace
+                         (attributes whitespace)?
+                         base_block
+</code></pre></figure></details><p>An <strong>indent group</strong> is redesigned syntax of the <a href=https://github.com/nvim-neorg/norg-specs/blob/82d7f7fa066066b997056bfdb1ab30ca336307e8/1.0-specification.norg#L240>nestable detached modifier</a> from v1. Broadly speaking, an <strong>indent group</strong> is a group of <code>flat_block</code>s which are indented in same indentation kind.<p>There are three types of <strong>indent groups</strong><ul><li><p>unordered list</p><li><p>ordered list</p><li><p>quote</p></ul><p>All <strong>indent groups</strong> are basically identical except their indent kinds. So I'll explain with <strong>unordered list</strong> here.<p>An <strong>unordered list</strong> is a list of <strong>unordered list items</strong>. An <strong>unordered list item</strong> starts with single <strong>flat block</strong> that is indented with <em>unordered kind</em> and can have following items as children:<ul><li><p>following <strong>null indented flat block</strong> with same or lower level</p><li><p>following <strong>indent groups</strong> with lower level.</p></ul><section><h3>Example 1 - Usage of null indents</h3><p>A <strong>null indent</strong> means we will change that <strong>base block</strong>'s indent level and won't set any meanings to the indent kind. We can use this to include multiple blocks under single list item. Similar to putting multiple <code>&LTp></code> tags under <code>&LTli></code> tag in HTML.<figure><pre><code>- paragraph 1
+/ paragraph 2
+/ @code
+  even with code blocks
+  @end
+</code></pre></figure></section><section><h3>Example 2 - Indented group delimiter</h3><p>An unindented blank line has level 0, so it cannot contained in any indented group. An unindented blank line can be used as <em>indented group delimiter</em>.<figure><pre><code>- this is
+- 1st unordered
+- list
+
+- this is
+- 2nd unordered
+- list
+</code></pre></figure></section><section><h3>Example 3 - Visual separator between indented paragraphs</h3><p>Do you remember that a <strong>blank line</strong> is actually part of <strong>base blocks</strong>? That means we can do like this:<figure><pre><code>- paragraph 1
+/
+/ paragraph 2
+</code></pre></figure><p>This is valid single unordered list item with two paragraphs.<p>Another example would be quote with two paragraphs like:<figure><pre><code>> paragraph 1
+>
+> paragraph 2
+</code></pre></figure><p>This is a single block quote with two paragraphs.</section><section><h3>Example 4 - List right under the quote</h3><figure><pre><code>>
+-- unordered list
+-- right under
+-- the quote
+</code></pre></figure><p>This corresponds to the <code>> -</code> syntax in Markdown. Way easier to parse while retaining the readability.</section></section><section><h2>Carryover Tag</h2><p>Let me explain how the <strong>carryover tag</strong> I mentioned earlier operates.<p>The <em>next node</em> carryover tag accept can be defined as: "a following node that exists under the same indent group to the carryover tag"<p>The reason why I'm explaining this now is because we can attach it to sublist.<figure><pre><code>> #color red
+-- this is a red level 2 list
+-- under level 1 quote
+-- (still red)
+</code></pre></figure><p>Here, <code>#color red</code> consumes the <span class=underline>level 2 unordered list</span> which is under <span class=underline>level 1 quote item</span>. Because <span class=underline>unordered list</span> itself is a sibling of the carryover tag, the definition of <em>next node</em> applies.</section></section></article></main><footer><div><span>Copyright © 2025 <a href=https://github.com/boltlessengineer>boltless</a>. Licensed under GPLv2.</span></div></footer>
