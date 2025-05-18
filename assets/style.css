@@ -139,6 +139,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-block-start: 0.75rem;
 }
 
+/* prevent smaller h1 font-size under article/section */
+h1 {
+  font-size: 2em;
+}
+
 article ul,
 article ol {
   padding-inline-start: 2rem;
