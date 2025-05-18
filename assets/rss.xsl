@@ -19,6 +19,7 @@
         <main>
         <xsl:for-each select="/rss/channel/item">
           <div>
+          <div>
             <xsl:value-of select="pubDate"/>
           </div>
           <h2>
@@ -34,6 +35,7 @@
               <xsl:value-of select="description"/>
             </p>
           </xsl:if>
+          </div>
         </xsl:for-each>
         </main>
       </body>
