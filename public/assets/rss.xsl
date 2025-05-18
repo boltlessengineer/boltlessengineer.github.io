@@ -16,6 +16,7 @@
       </head>
       <body>
         <h1>Recent blog posts</h1>
+        <p>Poorly styled. But it's at least better than seeing raw xml</p>
         <main>
           <xsl:for-each select="/rss/channel/item">
           <div>

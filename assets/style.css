@@ -32,7 +32,7 @@
   padding: 0;
 }
 
-html {
+:root {
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --article-width: 600px;
   --gutter-width: max(0px, calc((50vw - 300px) / 7));
@@ -106,18 +106,6 @@ article figure {
   margin-block: 1em;
 }
 
-li p,
-li figure {
-  margin-block: .5em;
-}
-
-li input[type="checkbox"] {
-  margin-right: .5em;
-}
-li input[type="checkbox"] + p {
-  display: inline-block;
-}
-
 /* TODO: test block img outside of figure tag */
 /* TODO: set display:block when img is outside of paragraph */
 article figure > img {
@@ -142,9 +130,25 @@ h1 {
   font-size: 2em;
 }
 
-article ul,
-article ol {
-  padding-inline-start: 2rem;
+article li {
+  --line-height: 1.6em;
+  line-height: var(--line-height);
+  margin-inline-start: 2em;
+}
+
+article li:has(> input[type="checkbox"]) {
+  list-style: none;
+  margin: 0;
+  padding-inline-start: 2em;
+  position: relative;
+}
+article ul > li:has(> input[type="checkbox"]:checked) p {
+  text-decoration-line: line-through;
+}
+article ul > li > input[type="checkbox"] {
+  position: absolute;
+  inset-inline-start: 10px;
+  inset-block-start: calc((1.6rem - 12px) / 2);
 }
 
 article pre {
