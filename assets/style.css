@@ -118,16 +118,14 @@ li input[type="checkbox"] + p {
   display: inline-block;
 }
 
-article figure:has(> img) {
-  max-height: max(32ch, 50vh);
-}
-
+/* TODO: test block img outside of figure tag */
+/* TODO: set display:block when img is outside of paragraph */
 article figure > img {
   max-width: 100%;
-  max-height: inherit;
+  max-height: max(32ch, 50vh);
   display: block;
   margin: 0 auto;
-  widht: auto;
+  width: auto;
   height: auto;
 }
 
