@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ metadata.title }} - {{ config.title }}{% endblock title %}
 {% block content %}
-<h1>{{ metadata.title }}</h1>
+<div class="title">
+  <h1>{{ metadata.title }}</h1>
+  <time datetime="{{ metadata.created }}">{{ metadata.created | date(format="%Y-%m-%d") }}</time>
+</div>
 <article>
 {{ content | safe }}
 </article>

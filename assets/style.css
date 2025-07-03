@@ -130,6 +130,19 @@ h1 {
   font-size: 2em;
 }
 
+.title {
+  margin-block: inherit;
+  padding-block: inherit;
+  border: inherit;
+  margin-bottom: 2rem;
+}
+.title h1 {
+  font-weight: 800;
+}
+.title time {
+  font-style: italic;
+}
+
 article li {
   --line-height: 1.6em;
   line-height: var(--line-height);
