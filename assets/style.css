@@ -143,6 +143,10 @@ h1 {
   font-style: italic;
 }
 
+article .strikethrough {
+  text-decoration-line: line-through;
+}
+
 article li {
   --line-height: 1.6em;
   line-height: var(--line-height);

@@ -1,0 +1,44 @@
+<!doctypehtml><html lang=en-US><meta charset=UTF-8><meta content=width=device-width,initial-scale=1.0 name=viewport><link href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><link href=https://boltless.me/assets/favicon.ico rel=icon type=image/x-icon><link href=https://boltless.me/assets/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://boltless.me/assets/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=https://boltless.me/assets/style.css?v======================== rel=stylesheet><title>golang - boltlessengineer</title><body><header><nav><span><a href=https://boltless.me/>boltless.me</a></span><ul><li><a href=https://boltless.me/about>about</a><li><a href=https://boltless.me/posts>blog</a><li><a href=https://boltless.me/doro>doro</a><li><a href=https://boltless.me/rss.xml>rss</a></ul></nav></header><main><div class=title><h1>golang</h1><time datetime=2025-11-05T08:24:50+09:00>2025-11-05</time></div><article><p>My thouhgts about golang...<p>I like that I don't need to learn about common methods. I can easily memorize all builtin methods and those are enough because golang generally reduces the abstraction.<p>But reducing abstraction results to duplicated code.<p>here is an example:<figure><pre><code class=language-go>const (
+	maxMentions = 5
+	maxRefLinks = 5
+)
+func (s *Issues) find_references(ctx context.Context, source string) ([]syntax.DID, []syntax.ATURI) {
+	// same code here
+}
+func (s *Pulls) find_references(ctx context.Context, source string) ([]syntax.DID, []syntax.ATURI) {
+	l := s.logger.With("method", "find_references")
+	rawMentions, rawRefs := markup.FindReferences(s.config.Core.AppviewHost, source)
+	l.Debug("found possible references", "mentions", rawMentions, "refs", rawRefs)
+	idents := s.idResolver.ResolveIdents(ctx, rawMentions)
+	var mentions []syntax.DID
+	for _, ident := range idents {
+		if ident != nil && !ident.Handle.IsInvalidHandle() {
+			mentions = append(mentions, ident.DID)
+		}
+	}
+	if len(mentions) > maxMentions {
+		mentions = mentions[:maxMentions]
+	}
+	l.Debug("found mentions", "mentions", mentions)
+
+	var resolvedRefs []models.ReferenceLink
+	for _, rawRef := range rawRefs {
+		ident, err := s.idResolver.ResolveIdent(ctx, rawRef.Handle)
+		if err != nil || ident == nil || ident.Handle.IsInvalidHandle() {
+			continue
+		}
+		rawRef.Handle = string(ident.DID)
+		resolvedRefs = append(resolvedRefs, rawRef)
+	}
+	aturiRefs, err := db.FindReferences(s.db, resolvedRefs)
+	if err != nil {
+		l.Error("failed running query", "err", err)
+	}
+	if len(aturiRefs) > maxRefLinks {
+		aturiRefs = aturiRefs[:maxRefLinks]
+	}
+	l.Debug("found references", "refs", aturiRefs)
+
+	return mentions, aturiRefs
+}
+</code></pre></figure><p>Here, <code>find_references</code> is a duplicated logic for both <code>Issues</code> and <code>Services</code> services.<p>Not sure what's the best way to deduplicated this code. It's already stateless enough.</article></main><footer><div><span>Copyright © 2026 <a href=https://github.com/boltlessengineer>boltless</a>. Licensed under GPLv2.</span></div></footer>
