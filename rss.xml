@@ -7,7 +7,7 @@
     <description>Latest posts</description>
     <generator>Norgolith</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 31 Oct 2025 11:02:19 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 04:08:44 +0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https:&#x2F;&#x2F;boltless.me/rss.xml" rel="self" type="application/rss+xml" />
 
@@ -19,6 +19,15 @@
       <height>144</height>
     </image>
 
+    
+    <item>
+      <title>2025 Wrapped</title>
+      <link>https://boltless.me/posts/2025-wrapped/</link>
+      <guid>https://boltless.me/posts/2025-wrapped/</guid>
+      
+      <pubDate>Wed, 22 Apr 2026 14:01:56 +0900</pubDate>
+      <category>yearly-wrapped</category>
+    </item>
     
     <item>
       <title>2024 Wrapped</title>
